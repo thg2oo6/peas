@@ -11,3 +11,23 @@ $black: #282828;
 .material-icons {
   width: 24px;
 }
+
+.score-icon {
+  &::after {
+    content: " ";
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/images/pea.png");
+  }
+
+  &.small::after {
+    width: 20px;
+    height: 25px;
+    background-size: 20px;
+  }
+}

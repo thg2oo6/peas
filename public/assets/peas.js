@@ -652,7 +652,7 @@ define("peas/templates/application", ["exports"], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("img");
         dom.setAttribute(el4, "class", "logo");
-        dom.setAttribute(el4, "src", "/logo.png");
+        dom.setAttribute(el4, "src", "/images/logo.png");
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n    ");
         dom.appendChild(el3, el4);
@@ -1192,7 +1192,7 @@ define("peas/templates/components/user-info", ["exports"], function (exports) {
           var el1 = dom.createTextNode("          ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("i");
-          dom.setAttribute(el1, "class", "material-icons");
+          dom.setAttribute(el1, "class", "material-icons md-18");
           var el2 = dom.createTextNode("exit_to_app");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -1261,6 +1261,11 @@ define("peas/templates/components/user-info", ["exports"], function (exports) {
         var el5 = dom.createTextNode("\n            ");
         dom.appendChild(el4, el5);
         var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode(" ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("span");
+        dom.setAttribute(el5, "class", "score-icon small");
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n          ");
         dom.appendChild(el4, el5);

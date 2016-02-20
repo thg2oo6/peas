@@ -41,7 +41,7 @@
   overflow: auto;
   width: 100%; }
   .user-info-container .left {
-    margin-top: 10px;
+    margin-top: 5px;
     float: left; }
     .user-info-container .left .name {
       text-align: right; }
@@ -49,13 +49,32 @@
       font-size: 12px;
       display: inline-block; }
   .user-info-container .right {
-    width: 85px;
+    width: 75px;
     float: right;
     margin-right: 15px; }
     .user-info-container .right .avatar img {
-      width: 55px; }
+      max-width: 50px; }
+    .user-info-container .right .signout .material-icons {
+      width: 20px;
+      font-size: 20px; }
     .user-info-container .right div {
       display: inline-block; }
 
 .material-icons {
   width: 24px; }
+
+.score-icon::after {
+  content: " ";
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/images/pea.png"); }
+
+.score-icon.small::after {
+  width: 20px;
+  height: 25px;
+  background-size: 20px; }

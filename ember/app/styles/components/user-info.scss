@@ -4,7 +4,7 @@
   width: 100%;
 
   .left {
-    margin-top: 10px;
+    margin-top: 5px;
     float: left;
     .name {
       text-align: right;
@@ -16,11 +16,15 @@
   }
 
   .right {
-    width: 85px;
+    width: 75px;
     float: right;
     margin-right: 15px;
     .avatar img {
-      width: 55px;
+      max-width: 50px;
+    }
+    .signout .material-icons {
+      width: 20px;
+      font-size: 20px;
     }
     div {
       display: inline-block;

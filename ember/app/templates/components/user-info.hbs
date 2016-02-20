@@ -5,7 +5,7 @@
       </div>
       <div class="details">
           <div class="score">
-            {{user.score}}
+            {{user.score}} <span class="score-icon small"></span>
           </div>
           <div class="level">
             Level: <span class="level-name">{{user.level}}</span>
@@ -18,7 +18,7 @@
       </div>
       <div class="signout">
         {{#link-to 'signout' class="mdl-navigation__link"}}
-          <i class="material-icons">exit_to_app</i>
+          <i class="material-icons md-18">exit_to_app</i>
         {{/link-to}}
       </div>
     </div>
