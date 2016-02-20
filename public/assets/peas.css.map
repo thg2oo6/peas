@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "peas.css",
+	"sources": [
+		"../../sass_compiler-input_base_path-6burZTXf.tmp/0/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-6burZTXf.tmp/0/app/styles/components/sidebar-navigation.scss"
+	],
+	"sourcesContent": [
+		"@import \"./components/sidebar-navigation\";\n\n.material-icons {\n  width: 24px;\n}\n",
+		".mdl-layout__drawer.right {\n  left: initial;\n  right: 0;\n}\n\n.mdl-layout__drawer.left {\n  width: 175px;\n\n  .mdl-layout-title {\n    margin-top: 15px;\n    padding-left: 0;\n    text-align: center;\n    img.logo {\n      max-width: 120px;\n    }\n  }\n\n  a.mdl-navigation__link {\n    padding: 15px;\n    text-align: right;\n  }\n}\n"
+	],
+	"mappings": "ACAA,mBAAmB,AAAA,MAAM,CAAC;EACxB,IAAI,EAAE,OAAQ;EACd,KAAK,EAAE,CAAE,GACV;;AAED,mBAAmB,AAAA,KAAK,CAAC;EACvB,KAAK,EAAE,KAAM,GAed;EAhBD,mBAAmB,AAAA,KAAK,CAGtB,iBAAiB,CAAC;IAChB,UAAU,EAAE,IAAK;IACjB,YAAY,EAAE,CAAE;IAChB,UAAU,EAAE,MAAO,GAIpB;IAVH,mBAAmB,AAAA,KAAK,CAGtB,iBAAiB,CAIf,GAAG,AAAA,KAAK,CAAC;MACP,SAAS,EAAE,KAAM,GAClB;EATL,mBAAmB,AAAA,KAAK,CAYtB,CAAC,AAAA,qBAAqB,CAAC;IACrB,OAAO,EAAE,IAAK;IACd,UAAU,EAAE,KAAM,GACnB;;ADlBH,eAAe,CAAC;EACd,KAAK,EAAE,IAAK,GACb",
+	"names": []
+}

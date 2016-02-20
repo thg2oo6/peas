@@ -6,7 +6,17 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const thinky = require('thinky')(config.thinky);
 
+function registerModules(app, socket) {
+    require('./modules/dashboard')(app, socket);
+}
+
 function configure(app) {
+    var io = require('socket.io').listen(3001);
+
+    io.sockets.on('connection', function (socket) {
+        registerModules(app, socket);
+    });
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -18,25 +28,6 @@ function configure(app) {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
-
-
-    app.use(function(req, res, next) {
-        var err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-    });
-
-    if (app.get('env') === 'development') {
-        app.use(function(err, req, res, next) {
-            res.status(err.status || 500);
-            res.send(err);
-        });
-    }
-
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.send(err.message);
-    });
 }
 
 module.exports = configure;

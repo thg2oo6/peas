@@ -12,19 +12,33 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
+    sassOptions: {
+      includePaths: ['bower_components/material-design-lite/src']
+    },
     APP: {
+      websocketHost: '0.0.0.0',
+      websocketPort: 3001
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      'font-src': "'self'",
+      'connect-src': "'self' ws://localhost:7000 localhost:7000",
+      'img-src': "'self'",
+      'report-uri':"'localhost'",
+      'style-src': "'self' 'unsafe-inline'",
+      'frame-src': "'none'"
     }
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+     //ENV.APP.LOG_RESOLVER = true;
+     //ENV.APP.LOG_ACTIVE_GENERATION = true;
+     //ENV.APP.LOG_TRANSITIONS = true;
+     //ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+     //ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
@@ -38,6 +52,15 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
   }
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self' fonts.gstatic.com",
+    'connect-src': "'self'",
+    'img-src': "'self' data:",
+    'media-src': "'self'"
+  };
 
   if (environment === 'production') {
 

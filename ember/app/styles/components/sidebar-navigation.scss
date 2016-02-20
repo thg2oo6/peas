@@ -1,0 +1,22 @@
+.mdl-layout__drawer.right {
+  left: initial;
+  right: 0;
+}
+
+.mdl-layout__drawer.left {
+  width: 175px;
+
+  .mdl-layout-title {
+    margin-top: 15px;
+    padding-left: 0;
+    text-align: center;
+    img.logo {
+      max-width: 120px;
+    }
+  }
+
+  a.mdl-navigation__link {
+    padding: 15px;
+    text-align: right;
+  }
+}
