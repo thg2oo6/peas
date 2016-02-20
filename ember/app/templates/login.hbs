@@ -1,0 +1,36 @@
+<div class="mdl-grid login-page">
+  <div class="mdl-cell mdl-cell--4-col"></div>
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="logo">
+        <img src="/images/logoLarge.png" />
+    </div>
+    <div class="form">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="username">
+        <label class="mdl-textfield__label" for="username">Username</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="password">
+        <label class="mdl-textfield__label" for="password">Password</label>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="helpers">
+          <div class="register">
+            <div>
+                {{#link-to 'register'}}Register{{/link-to}}
+            </div>
+            <div>
+                {{#link-to 'forgot-password'}}Forgot user or password?{{/link-to}}
+            </div>
+          </div>
+      </div>
+      <div class="button">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Login <i class="material-icons">exit_to_app</i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col"></div>
+</div>
