@@ -1,20 +1,70 @@
 <nav class="mdl-navigation">
-  {{#link-to 'app.dashboard' class="mdl-navigation__link"}}
-    Dashboard <i class="material-icons">dashboard</i>
-  {{/link-to}}
-  {{#link-to 'app.activities' class="mdl-navigation__link"}}
-    Activities <i class="material-icons">star rate</i>
-  {{/link-to}}
-  {{#link-to 'app.badges' class="mdl-navigation__link"}}
-    My Badges
-    <i class="material-icons">star rate</i>
-  {{/link-to}}
-  {{#link-to 'app.profile' class="mdl-navigation__link"}}
-    Profile
-    <i class="material-icons">account_circle</i>
-  {{/link-to}}
-  {{#link-to 'app.signout' class="mdl-navigation__link"}}
-    Sign Out
-    <i class="material-icons">exit_to_app</i>
-  {{/link-to}}
+  {{#active-link tagName='div'}}
+    {{#link-to 'app.dashboard' class="mdl-navigation__link"}}
+      Dashboard <i class="material-icons">dashboard</i>
+      <i class="material-icons active">keyboard_arrow_right</i>
+    {{/link-to}}
+  {{/active-link}}
+
+  {{#active-link tagName='div'}}
+    {{#link-to 'app.activities' class="mdl-navigation__link"}}
+      Activities <i class="material-icons">local_activity</i>
+      <i class="material-icons active">keyboard_arrow_right</i>
+    {{/link-to}}
+  {{/active-link}}
+
+
+  {{#active-link tagName='div'}}
+    {{#link-to 'app.badges' class="mdl-navigation__link"}}
+      My Badges
+      <i class="material-icons">star_rate</i>
+      <i class="material-icons active">keyboard_arrow_right</i>
+    {{/link-to}}
+  {{/active-link}}
+
+
+  {{#active-link tagName='div'}}
+    {{#link-to 'app.profile' class="mdl-navigation__link"}}
+      Profile
+      <i class="material-icons">account_circle</i>
+      <i class="material-icons active">keyboard_arrow_right</i>
+    {{/link-to}}
+  {{/active-link}}
+
+  {{#active-link tagName='div'}}
+    {{#link-to 'signout' class="mdl-navigation__link"}}
+      Sign Out
+      <i class="material-icons">exit_to_app</i>
+      <i class="material-icons active">keyboard_arrow_right</i>
+    {{/link-to}}
+  {{/active-link}}
+
+  <div class="management">
+    <span class="title">Manage</span>
+
+    {{#active-link tagName='div'}}
+      {{#link-to 'app.settings.user-management' class="mdl-navigation__link"}}
+        Users
+        <i class="material-icons">supervisor_account</i>
+        <i class="material-icons active">keyboard_arrow_right</i>
+      {{/link-to}}
+    {{/active-link}}
+
+    {{#active-link tagName='div'}}
+      {{#link-to 'app.settings.plugin-management' class="mdl-navigation__link"}}
+        Plugins
+        <i class="material-icons">settings_input_component</i>
+        <i class="material-icons active">keyboard_arrow_right</i>
+      {{/link-to}}
+    {{/active-link}}
+
+    {{#active-link tagName='div'}}
+      {{#link-to 'app.settings.level-management' class="mdl-navigation__link"}}
+        Levels
+        <i class="material-icons">clear_all</i>
+        <i class="material-icons active">keyboard_arrow_right</i>
+      {{/link-to}}
+    {{/active-link}}
+  </div>
+
 </nav>

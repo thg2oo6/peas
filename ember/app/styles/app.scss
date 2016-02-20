@@ -1,17 +1,32 @@
 $darkGreen: #557b2f;
 $lightGreen: #8bc34a;
 $gray: #707070;
-$headingGreen: #24517f;
+$darkBlue: #24517f;
 $black: #282828;
 
 @import "./components/sidebar-navigation";
 @import "./components/activity-list";
 @import "./components/user-info";
 
+@import "./components/table";
+@import "./components/button";
+@import "./components/form";
+
 @import "./pages/login";
 
 .material-icons {
   width: 24px;
+}
+
+.app-container {
+  .mdl-layout--fixed-drawer > .mdl-layout__content {
+    margin-left: 175px;
+
+    .page-content {
+      margin-right: 240px;
+      padding: 15px;
+    }
+  }
 }
 
 .score-icon {

@@ -1,0 +1,15 @@
+.form.peas-form {
+  width: 300px;
+  margin: 0 auto;
+
+  .button-container {
+    button {
+      &.right {
+        float: right;
+      }
+      &.left {
+        float: left;
+      }
+    }
+  }
+}
