@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+waitall() {
+  ## usage:  waitall pid-1 [pid-2 [... pid-n]]
+  ## Wait for children to exit and indicate whether all exited with 0 status.
+  local errors=0
+  while :; do
+    for pid in "$@"; do
+      shift
+	  if (($errors > 0)) ; then
+		kill $pid >& /dev/null || true
+	  fi
+      if kill -0 "$pid" >& /dev/null ; then
+        set -- "$@" "$pid"
+	  else
+		status=$(wait "$pid" >& /dev/null; echo $?)
+        echo "$pid exited with status $status." 1>&2
+        ((++errors))
+      fi
+    done
+	(("$#" == 0)) && break
+    sleep ${WAITALL_DELAY:-1}
+  done
+  ((errors == 0))
+}

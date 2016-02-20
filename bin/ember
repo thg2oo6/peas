@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+scriptPath=$(f="$0"; while ff=$(readlink $f); do f=$(dirname $f)/$ff; done && echo $f)
+scriptDir=$(cd $(dirname $scriptPath) && pwd)
+projectDir=$(cd $scriptDir/.. && pwd)
+
+cd "$projectDir"
+cd ember
+exec ember serve -out ../public

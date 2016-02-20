@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -e
+
+scriptPath=$(f="$0"; while ff=$(readlink $f); do f=$(dirname $f)/$ff; done && echo $f)
+scriptDir=$(cd $(dirname $scriptPath) && pwd)
+projectDir=$(cd $scriptDir/.. && pwd)
+
+cd "$projectDir"
+source bin/waitall
+
+pids=();
+
+# launch express app
+if [ -x bin/express ] ; then
+  echo -n "launching express app: "
+  ( exec bin/express ) & pid=$!
+  pids+=( $pid )
+fi
+
+# launch ember watcher
+if [ -x bin/ember ] ; then
+  echo -n "launching ember watcher: "
+  ( exec bin/ember ) & pid=$!
+  pids+=( $pid )
+  echo $pid
+fi
+
+trap 'echo -e "\nExiting (run-all)..."; kill -SIGTERM "${pids[@]}"' SIGINT SIGTERM
+
+sleep 1
+echo -e "\nCTRL-C to exit"
+# wait for everything to exit
+waitall "${pids[@]}" || true
+echo done
