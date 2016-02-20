@@ -1,0 +1,30 @@
+.login-page {
+  div.logo {
+    max-width: 325px;
+    margin: 0 auto;
+    img {
+      max-width: inherit;
+    }
+  }
+  div.form {
+    text-align: center;
+  }
+
+  div.actions {
+    width: 300px;
+    margin: 0 auto;
+    .helpers {
+      float: left;
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .button {
+      float: right;
+    }
+  }
+}
