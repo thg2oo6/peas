@@ -1,0 +1,20 @@
+<div class="activity-list-container">
+  <h6 class="title">Activity list</h6>
+  <ul class="activity-list">
+    {{#each activities as |activity|}}
+      <div class="activity-info">
+        <div class="image">
+            <img src="{{activity.badge.image}}" />
+        </div>
+        <div class="activity-content">
+          <div class="user-info">
+            {{activity.user.name}} has earned {{activity.badge.name}}
+          </div>
+          <div class="score">
+            {{activity.badge.score}}<span class="score">p</span>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </ul>
+</div>

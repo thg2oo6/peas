@@ -1,4 +1,12 @@
+$darkGreen: #557b2f;
+$lightGreen: #8bc34a;
+$gray: #707070;
+$headingGreen: #24517f;
+$black: #282828;
+
 @import "./components/sidebar-navigation";
+@import "./components/activity-list";
+@import "./components/user-info";
 
 .material-icons {
   width: 24px;

@@ -1,0 +1,25 @@
+<div class="user-info-container">
+    <div class="left">
+      <div class="name">
+        {{user.name}}
+      </div>
+      <div class="details">
+          <div class="score">
+            {{user.score}}
+          </div>
+          <div class="level">
+            Level: <span class="level-name">{{user.level}}</span>
+          </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="avatar">
+        <img src="{{avatarUrl}}">
+      </div>
+      <div class="signout">
+        {{#link-to 'signout' class="mdl-navigation__link"}}
+          <i class="material-icons">exit_to_app</i>
+        {{/link-to}}
+      </div>
+    </div>
+</div>

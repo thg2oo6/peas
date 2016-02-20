@@ -22,6 +22,51 @@ define('peas/app', ['exports', 'ember', 'peas/resolver', 'ember-load-initializer
 
   exports['default'] = App;
 });
+define('peas/components/activity-list', ['exports', 'ember', 'lodash/lodash'], function (exports, _ember, _lodashLodash) {
+  exports['default'] = _ember['default'].Component.extend({
+    activities: [{
+      user: {
+        id: 1,
+        name: "John Doe"
+      },
+      badge: {
+        name: "New comer badge",
+        image: "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+        score: 5
+      }
+    }, {
+      user: {
+        id: 1,
+        name: "John Doe"
+      },
+      badge: {
+        name: "New comer badge",
+        image: "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+        score: 5
+      }
+    }, {
+      user: {
+        id: 1,
+        name: "John Doe"
+      },
+      badge: {
+        name: "New comer badge",
+        image: "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+        score: 5
+      }
+    }, {
+      user: {
+        id: 1,
+        name: "John Doe"
+      },
+      badge: {
+        name: "New comer badge",
+        image: "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+        score: 5
+      }
+    }]
+  });
+});
 define('peas/components/app-version', ['exports', 'ember-cli-app-version/components/app-version', 'peas/config/environment'], function (exports, _emberCliAppVersionComponentsAppVersion, _peasConfigEnvironment) {
 
   var name = _peasConfigEnvironment['default'].APP.name;
@@ -34,6 +79,21 @@ define('peas/components/app-version', ['exports', 'ember-cli-app-version/compone
 });
 define('peas/components/sidebar-navigation', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({});
+});
+define('peas/components/user-info', ['exports', 'ember', 'npm:crypto-js'], function (exports, _ember, _npmCryptoJs) {
+  exports['default'] = _ember['default'].Component.extend({
+    user: {
+      id: 1,
+      name: "Ionel Cusca",
+      score: 9001,
+      level: "Bosdebos",
+      email: "paul@cioan.ca"
+    },
+
+    avatarUrl: _ember['default'].computed('avatarUrl', function () {
+      return 'http://www.gravatar.com/avatar/' + _npmCryptoJs['default'].MD5(this.get('user').email) + '.jpg';
+    })
+  });
 });
 define('peas/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
@@ -485,6 +545,74 @@ define("peas/templates/application", ["exports"], function (exports) {
         templates: []
       };
     })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 14,
+              "column": 4
+            },
+            "end": {
+              "line": 14,
+              "column": 18
+            }
+          },
+          "moduleName": "peas/templates/application.hbs"
+        },
+        isEmpty: true,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() {
+          return [];
+        },
+        statements: [],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child2 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 15,
+              "column": 4
+            },
+            "end": {
+              "line": 15,
+              "column": 22
+            }
+          },
+          "moduleName": "peas/templates/application.hbs"
+        },
+        isEmpty: true,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() {
+          return [];
+        },
+        statements: [],
+        locals: [],
+        templates: []
+      };
+    })();
     return {
       meta: {
         "fragmentReason": {
@@ -524,7 +652,7 @@ define("peas/templates/application", ["exports"], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("img");
         dom.setAttribute(el4, "class", "logo");
-        dom.setAttribute(el4, "src", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png");
+        dom.setAttribute(el4, "src", "/logo.png");
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n    ");
         dom.appendChild(el3, el4);
@@ -558,12 +686,13 @@ define("peas/templates/application", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
         dom.setAttribute(el2, "class", "mdl-layout__drawer right");
-        var el3 = dom.createTextNode("\n    \n    ");
+        var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
-        var el3 = dom.createElement("span");
-        dom.setAttribute(el3, "class", "mdl-layout-title");
-        var el4 = dom.createTextNode("Activity");
-        dom.appendChild(el3, el4);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n  ");
         dom.appendChild(el2, el3);
@@ -577,12 +706,181 @@ define("peas/templates/application", ["exports"], function (exports) {
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [0]);
-        var morphs = new Array(2);
+        var element1 = dom.childAt(element0, [5]);
+        var morphs = new Array(4);
         morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 3, 3);
         morphs[1] = dom.createMorphAt(dom.childAt(element0, [3, 1]), 1, 1);
+        morphs[2] = dom.createMorphAt(element1, 1, 1);
+        morphs[3] = dom.createMorphAt(element1, 3, 3);
         return morphs;
       },
-      statements: [["block", "sidebar-navigation", [], [], 0, null, ["loc", [null, [6, 4], [6, 50]]]], ["content", "outlet", ["loc", [null, [10, 6], [10, 16]]]]],
+      statements: [["block", "sidebar-navigation", [], [], 0, null, ["loc", [null, [6, 4], [6, 50]]]], ["content", "outlet", ["loc", [null, [10, 6], [10, 16]]]], ["block", "user-info", [], [], 1, null, ["loc", [null, [14, 4], [14, 32]]]], ["block", "activity-list", [], [], 2, null, ["loc", [null, [15, 4], [15, 40]]]]],
+      locals: [],
+      templates: [child0, child1, child2]
+    };
+  })());
+});
+define("peas/templates/components/activity-list", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 4,
+              "column": 4
+            },
+            "end": {
+              "line": 18,
+              "column": 4
+            }
+          },
+          "moduleName": "peas/templates/components/activity-list.hbs"
+        },
+        isEmpty: false,
+        arity: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("      ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "activity-info");
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2, "class", "image");
+          var el3 = dom.createTextNode("\n            ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("img");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2, "class", "activity-content");
+          var el3 = dom.createTextNode("\n          ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("div");
+          dom.setAttribute(el3, "class", "user-info");
+          var el4 = dom.createTextNode("\n            ");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createTextNode(" has earned ");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createTextNode("\n          ");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n          ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("div");
+          dom.setAttribute(el3, "class", "score");
+          var el4 = dom.createTextNode("\n            ");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          var el4 = dom.createElement("span");
+          dom.setAttribute(el4, "class", "score");
+          var el5 = dom.createTextNode("p");
+          dom.appendChild(el4, el5);
+          dom.appendChild(el3, el4);
+          var el4 = dom.createTextNode("\n          ");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n      ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1]);
+          var element1 = dom.childAt(element0, [1, 1]);
+          var element2 = dom.childAt(element0, [3]);
+          var element3 = dom.childAt(element2, [1]);
+          var morphs = new Array(4);
+          morphs[0] = dom.createAttrMorph(element1, 'src');
+          morphs[1] = dom.createMorphAt(element3, 1, 1);
+          morphs[2] = dom.createMorphAt(element3, 3, 3);
+          morphs[3] = dom.createMorphAt(dom.childAt(element2, [3]), 1, 1);
+          return morphs;
+        },
+        statements: [["attribute", "src", ["concat", [["get", "activity.badge.image", ["loc", [null, [7, 24], [7, 44]]]]]]], ["content", "activity.user.name", ["loc", [null, [11, 12], [11, 34]]]], ["content", "activity.badge.name", ["loc", [null, [11, 46], [11, 69]]]], ["content", "activity.badge.score", ["loc", [null, [14, 12], [14, 36]]]]],
+        locals: ["activity"],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "triple-curlies"
+        },
+        "revision": "Ember@2.3.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 21,
+            "column": 0
+          }
+        },
+        "moduleName": "peas/templates/components/activity-list.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "activity-list-container");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h6");
+        dom.setAttribute(el2, "class", "title");
+        var el3 = dom.createTextNode("Activity list");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("ul");
+        dom.setAttribute(el2, "class", "activity-list");
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 3]), 1, 1);
+        return morphs;
+      },
+      statements: [["block", "each", [["get", "activities", ["loc", [null, [4, 12], [4, 22]]]]], [], 0, null, ["loc", [null, [4, 4], [18, 13]]]]],
       locals: [],
       templates: [child0]
     };
@@ -865,6 +1163,184 @@ define("peas/templates/components/sidebar-navigation", ["exports"], function (ex
     };
   })());
 });
+define("peas/templates/components/user-info", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 20,
+              "column": 8
+            },
+            "end": {
+              "line": 22,
+              "column": 8
+            }
+          },
+          "moduleName": "peas/templates/components/user-info.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("          ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("i");
+          dom.setAttribute(el1, "class", "material-icons");
+          var el2 = dom.createTextNode("exit_to_app");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() {
+          return [];
+        },
+        statements: [],
+        locals: [],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "triple-curlies"
+        },
+        "revision": "Ember@2.3.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 26,
+            "column": 0
+          }
+        },
+        "moduleName": "peas/templates/components/user-info.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "user-info-container");
+        var el2 = dom.createTextNode("\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "left");
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "name");
+        var el4 = dom.createTextNode("\n        ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "details");
+        var el4 = dom.createTextNode("\n          ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "score");
+        var el5 = dom.createTextNode("\n            ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createComment("");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n          ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n          ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4, "class", "level");
+        var el5 = dom.createTextNode("\n            Level: ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("span");
+        dom.setAttribute(el5, "class", "level-name");
+        var el6 = dom.createComment("");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n          ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "right");
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "avatar");
+        var el4 = dom.createTextNode("\n        ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("img");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3, "class", "signout");
+        var el4 = dom.createTextNode("\n");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("      ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(element0, [1]);
+        var element2 = dom.childAt(element1, [3]);
+        var element3 = dom.childAt(element0, [3]);
+        var element4 = dom.childAt(element3, [1, 1]);
+        var morphs = new Array(5);
+        morphs[0] = dom.createMorphAt(dom.childAt(element1, [1]), 1, 1);
+        morphs[1] = dom.createMorphAt(dom.childAt(element2, [1]), 1, 1);
+        morphs[2] = dom.createMorphAt(dom.childAt(element2, [3, 1]), 0, 0);
+        morphs[3] = dom.createAttrMorph(element4, 'src');
+        morphs[4] = dom.createMorphAt(dom.childAt(element3, [3]), 1, 1);
+        return morphs;
+      },
+      statements: [["content", "user.name", ["loc", [null, [4, 8], [4, 21]]]], ["content", "user.score", ["loc", [null, [8, 12], [8, 26]]]], ["content", "user.level", ["loc", [null, [11, 44], [11, 58]]]], ["attribute", "src", ["concat", [["get", "avatarUrl", ["loc", [null, [17, 20], [17, 29]]]]]]], ["block", "link-to", ["signout"], ["class", "mdl-navigation__link"], 0, null, ["loc", [null, [20, 8], [22, 20]]]]],
+      locals: [],
+      templates: [child0]
+    };
+  })());
+});
 define("peas/templates/dashboard", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -936,7 +1412,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("peas/app")["default"].create({"websocketHost":"0.0.0.0","websocketPort":3001,"name":"peas","version":"0.0.0+becfe4d3"});
+  require("peas/app")["default"].create({"websocketHost":"0.0.0.0","websocketPort":3001,"name":"peas","version":"0.0.0+83af6b36"});
 }
 
 /* jshint ignore:end */

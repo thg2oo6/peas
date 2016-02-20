@@ -1,7 +1,7 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
   <div class="mdl-layout__drawer left">
     <span class="mdl-layout-title">
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" />
+      <img class="logo" src="/logo.png" />
     </span>
     {{#sidebar-navigation}}{{/sidebar-navigation}}
   </div>
@@ -11,7 +11,7 @@
     </div>
   </main>
   <div class="mdl-layout__drawer right">
-    
-    <span class="mdl-layout-title">Activity</span>
+    {{#user-info}}{{/user-info}}
+    {{#activity-list}}{{/activity-list}}
   </div>
 </div>

@@ -14,5 +14,48 @@
     padding: 15px;
     text-align: right; }
 
+.activity-list-container h6.title {
+  text-align: center;
+  margin-top: 8px; }
+
+.activity-list-container .activity-list {
+  padding-left: 15px; }
+  .activity-list-container .activity-list .activity-info:not(:last-of-type) {
+    margin-bottom: 10px; }
+  .activity-list-container .activity-list .activity-info .image {
+    display: table-cell;
+    height: 36px;
+    width: 36px; }
+    .activity-list-container .activity-list .activity-info .image img {
+      height: inherit;
+      width: inherit; }
+  .activity-list-container .activity-list .activity-info .activity-content {
+    vertical-align: top;
+    display: table-cell;
+    font-size: 12px;
+    line-height: 13px;
+    padding-left: 10px; }
+
+.user-info-container {
+  padding: 10px;
+  overflow: auto;
+  width: 100%; }
+  .user-info-container .left {
+    margin-top: 10px;
+    float: left; }
+    .user-info-container .left .name {
+      text-align: right; }
+    .user-info-container .left .details div {
+      font-size: 12px;
+      display: inline-block; }
+  .user-info-container .right {
+    width: 85px;
+    float: right;
+    margin-right: 15px; }
+    .user-info-container .right .avatar img {
+      width: 55px; }
+    .user-info-container .right div {
+      display: inline-block; }
+
 .material-icons {
   width: 24px; }

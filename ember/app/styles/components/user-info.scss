@@ -1,0 +1,29 @@
+.user-info-container {
+  padding: 10px;
+  overflow: auto;
+  width: 100%;
+
+  .left {
+    margin-top: 10px;
+    float: left;
+    .name {
+      text-align: right;
+    }
+    .details div {
+      font-size: 12px;
+      display: inline-block;
+    }
+  }
+
+  .right {
+    width: 85px;
+    float: right;
+    margin-right: 15px;
+    .avatar img {
+      width: 55px;
+    }
+    div {
+      display: inline-block;
+    }
+  }
+}
