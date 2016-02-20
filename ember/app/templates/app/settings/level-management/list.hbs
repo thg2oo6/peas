@@ -1,0 +1,33 @@
+<div class="button-container right">
+  {{#link-to 'app.settings.level-management.create' tagName="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"}}
+    Create new <i class="material-icons">add_circle_outline</i>
+  {{/link-to}}
+</div>
+
+<table class="peas-table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Name</th>
+      <th>Minimum score</th>
+      <th>Logo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each levels as |level|}}
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">{{level.name}}</td>
+        <td>{{level.minScore}}</td>
+        <td><img src="{{level.logo}}" /></td>
+        <td>
+          {{#link-to 'app.settings.level-management.edit' level tagName="button" class="mdl-button mdl-js-button mdl-button--icon"}}
+            <i class="material-icons">mode_edit</i>
+          {{/link-to}}
+          <button class="mdl-button mdl-js-button mdl-button--icon" {{action 'remove' level}}>
+            <i class="material-icons">delete_forever</i>
+          </button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

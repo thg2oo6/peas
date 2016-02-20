@@ -9,13 +9,23 @@ Router.map(function() {
   this.route('login', { path: '/' });
   this.route('register');
   this.route('forgot-password');
+  this.route('signout');
   this.route('app', function() {
-      this.route('dashboard');
+      this.route('dashboard', { path: '/' });
       this.route('badges');
       this.route('activities');
       this.route('profile');
-      this.route('signout');
-  })
+
+      this.route('settings', function() {
+        this.route('user-management');
+        this.route('plugin-management');
+        this.route('level-management', function() {
+          this.route('list', { path: '/' });
+          this.route('create');
+          this.route('edit', { path: '/edit/:id'});
+        });
+      })
+  });
 });
 
 export default Router;

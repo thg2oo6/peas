@@ -1,20 +1,19 @@
 <div class="app-container">
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-    <div class="mdl-layout__drawer left">
-      <span class="mdl-layout-title">
-        <img class="logo" src="/images/logo.png" />
-      </span>
-      {{#sidebar-navigation}}{{/sidebar-navigation}}
-    </div>
-    <main class="mdl-layout__content">
-      <div class="page-content">
-        {{outlet}}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+      <div class="mdl-layout__drawer left">
+        <span class="mdl-layout-title">
+          <img class="logo" src="/images/logo.png" />
+        </span>
+        {{#sidebar-navigation}}{{/sidebar-navigation}}
       </div>
-    </main>
-    <div class="mdl-layout__drawer right">
-      {{#user-info}}{{/user-info}}
-      {{#activity-list}}{{/activity-list}}
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          {{outlet}}
+        </div>
+      </main>
+      <div class="mdl-layout__drawer right">
+        {{#user-info}}{{/user-info}}
+        {{#activity-list}}{{/activity-list}}
+      </div>
     </div>
-  </div>
-
 </div>
