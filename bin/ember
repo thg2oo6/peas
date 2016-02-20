@@ -8,4 +8,5 @@ projectDir=$(cd $scriptDir/.. && pwd)
 
 cd "$projectDir"
 cd ember
+npm link ember-cli
 exec ember serve -out ../public
