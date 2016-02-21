@@ -1,7 +1,7 @@
 function configure(app, socket, broadcast) {
     var User = app.model.User;
     var getUsers = function () {
-        User.orderBy("createdAt").run().then((result) => {
+        User.orderBy("createdAt").getJoin().run().then((result) => {
             broadcast.emit('settings.users.get.response', result.map((user) => {
               delete user.password;
               return user;
@@ -12,7 +12,7 @@ function configure(app, socket, broadcast) {
     User.changes().then(() => getUsers());
 
     socket.on('settings.users.getSingle', (data) => {
-        User.get(data.id).run().then((user) => {
+        User.get(data.id).getJoin().run().then((user) => {
             socket.emit('settings.users.getSingle.response', user);
         });
     });

@@ -16,12 +16,6 @@ var UserWrapper = function (thinky) {
         createdAt: type.date()
     });
 
-    User.pre("save", function () {
-        if (!this.createdAt) {
-            this.createdAt = new Date();
-        }
-    });
-    
     return User;
 };
 

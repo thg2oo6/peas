@@ -22,6 +22,25 @@ var Links = function (model) {
     Activity.hasMany(Badge, "badges", "id", "activityID");
     /* -- Activity <-(Badge)-> Users -- */
 
+    User.pre("save", function (next) {
+        if (!this.createdAt) {
+            this.createdAt = new Date();
+        }
+        console.log("ASDF");
+        Level.filter({
+                minScore: 0
+            })
+            .run()
+            .then((result)=> {
+                console.log("ASDF", result.length);
+                if (result.length == 0)
+                    return next();
+
+                this.levelID = result.pop().id;
+                next();
+            });
+
+    });
 };
 
 module.exports = Links;
