@@ -12,7 +12,7 @@ function registerModules(app, socket, broadcast) {
     require('./modules/badges')(app, socket, broadcast);
     require('./modules/levels')(app, socket, broadcast);
     require('./modules/profile')(app, socket, broadcast);
-    require('./modules/recents')(app, socket,broadcast);
+    require('./modules/recents')(app, socket, broadcast);
     require('./modules/users')(app, socket, broadcast);
 }
 
@@ -24,21 +24,21 @@ function configure(app) {
     var io = require('socket.io').listen(3001);
 
     var sessionStore = new RDBStore({
-      connectOptions: {
-        servers: [
-          { host: config.thinky.host, port: config.thinky.port }
-        ],
-        db: config.thinky.db,
-        discovery: false,
-        pool: true,
-        buffer: 50,
-        max: 1000,
-        timeout: 20,
-        timeoutError: 1000
-      },
-      table: 'session',
-      sessionTimeout: 86400000,
-      flushInterval: 60000
+        connectOptions: {
+            servers: [
+                {host: config.thinky.host, port: config.thinky.port}
+            ],
+            db: config.thinky.db,
+            discovery: false,
+            pool: true,
+            buffer: 50,
+            max: 1000,
+            timeout: 20,
+            timeoutError: 1000
+        },
+        table: 'session',
+        sessionTimeout: 86400000,
+        flushInterval: 60000
     });
 
     var sessionMiddleWare = session({
@@ -58,6 +58,7 @@ function configure(app) {
 
     // setup passport
     require('./passport')(app, sessionStore, io);
+    require('../modules')(app);
 
     io.sockets.on('connection', function (socket) {
         registerModules(app, socket, io.sockets);
