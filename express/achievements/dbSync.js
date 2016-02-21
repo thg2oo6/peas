@@ -36,6 +36,7 @@ DBSync = function (app, group) {
         return promiseFor(function (count) {
             return count < activities.length;
         }, function (count) {
+            activities[count].groupID = hidden.group.model.id;
             return hidden.checkActivity(activities[count])
                 .then((result)=> {
                     //    .save()
@@ -57,6 +58,7 @@ DBSync = function (app, group) {
     };
     hidden.createActivity = function (activity) {
         var act = new Activity(activity.modelDefinition);
+        act.groupID = hidden.group.model.id;
 
         return act.save()
             .then((result) => {

@@ -1,7 +1,7 @@
 function configure(app, socket, broadcast) {
     var Group = app.model.Group;
     var getGroups = function () {
-        Group.run().then((result) => {
+        Group.getJoin().run().then((result) => {
             broadcast.emit('app.activities.get.response', result);
         });
     };
@@ -10,9 +10,7 @@ function configure(app, socket, broadcast) {
 
     socket.on('app.activities.getSingle', (data) => {
         Group.get(data.id)
-            .getJoin({
-                activities: true
-            })
+            .getJoin()
             .run()
             .then((group) => {
                 broadcast.emit('app.activities.getSingle.response', group);

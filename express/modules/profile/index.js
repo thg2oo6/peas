@@ -19,15 +19,18 @@ function configure(app, socket, broadcast) {
         Level.filter(function (level) {
                 return level("minScore").le(user.score);
             })
-            .orderBy('-minScore')
+            .orderBy('minScore')
             .run()
             .then((result)=> {
-                var level = result.shift();
+                var level = result.pop();
 
                 if (level.id != user.levelID) {
                     return User.get(user.id)
                         .update({levelID: level.id})
-                        .run();
+                        .run()
+                        .then((result)=> {
+                            user = result;
+                        });
                 }
             });
     });

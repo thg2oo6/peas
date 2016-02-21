@@ -5,11 +5,6 @@ var Links = function (model) {
     const User = model.User;
     const Badge = model.Badge;
 
-    /* -- Activity <-> Group -- */
-    Activity.belongsTo(Group, "group", "groupID", "id");
-    Group.hasMany(Group, "activities", "id", "groupID");
-    /* -- Group <-> Activities -- */
-
     /* -- User <-> Level -- */
     User.belongsTo(Level, "level", "levelID", "id");
     Level.hasMany(User, "users", "id", "levelID");
@@ -21,6 +16,11 @@ var Links = function (model) {
     Badge.belongsTo(Activity, "activity", "activityID", "id");
     Activity.hasMany(Badge, "badges", "id", "activityID");
     /* -- Activity <-(Badge)-> Users -- */
+
+    /* -- Activity <-> Group -- */
+    Activity.belongsTo(Group, "group", "groupID", "id");
+    Group.hasMany(Activity, "activities", "id", "groupID");
+    /* -- Group <-> Activities -- */
 
     User.pre("save", function (next) {
         if (!this.createdAt) {
