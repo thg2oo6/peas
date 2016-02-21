@@ -1,31 +1,33 @@
 const assert = require('assert');
 const _ = require('lodash');
 const app = require('../../mockup/app');
-const levels = require('../../mockup/levels');
-const Level = app.model.Level;
+const groups = require('../../mockup/groups');
+const Group = app.model.Group;
 const promiseFor = require('../../utils/promiseFor');
 
-var levelCheck, levelCheckNot;
+var groupCheck, groupCheckNot;
 
 /**
  * TODO: Test unhappy path
  */
-describe("Level Model", () => {
+describe("Group Model", () => {
     before(() => {
-        levelCheck = (result, expected) => {
+        groupCheck = (result, expected) => {
             assert.equal(result.name, expected.name);
-            assert.equal(result.minScore, expected.minScore);
+            assert.equal(result.score, expected.score);
             assert.equal(result.logo, expected.logo);
+            assert.equal(result.description, expected.description);
         };
-        levelCheckNot = (result, expected) => {
+        groupCheckNot = (result, expected) => {
             assert.notEqual(result.name, expected.name);
-            assert.notEqual(result.minScore, expected.minScore);
+            assert.notEqual(result.score, expected.score);
             assert.notEqual(result.logo, expected.logo);
+            assert.notEqual(result.description, expected.description);
         };
     });
 
     it("should not have any elements", (done) => {
-        Level.count().execute()
+        Group.count().execute()
             .then((total) => {
                 assert.equal(total, 0);
                 done();
@@ -33,27 +35,40 @@ describe("Level Model", () => {
             .catch(done);
     });
     it("should create an element", (done) => {
-        var level = new Level(levels.noob),
-            level2 = new Level(levels.rookie);
+        var group = new Group(groups.noob),
+            group2 = new Group(groups.rookie);
 
-        level.save()
+        group.save()
             .then((result) => {
-                levelCheck(result, levels.noob);
+                groupCheck(result, groups.noob);
 
-                return level2.save();
+                return group2.save();
             })
             .then((result) => {
-                levelCheck(result, levels.rookie);
+                groupCheck(result, groups.rookie);
 
                 done();
             })
             .catch(done);
     });
+    it("should not create an invalid element", (done) => {
+        var group = new Group(groups.rookieNoScoreNoDesc);
+
+        group.save()
+            .then((result) => {
+                assert.ok(false);
+                done("Path not ok");
+            })
+            .catch((err)=> {
+                assert.ok(true);
+                done();
+            });
+    });
     it("should read all the elements", (done)=> {
-        Level.run()
+        Group.run()
             .then((result)=> {
                 for (var i in result)
-                    levelCheck(result[i], levels[result[i].name]);
+                    groupCheck(result[i], groups[result[i].name]);
 
                 assert.equal(result.length, 2);
                 done();
@@ -61,32 +76,33 @@ describe("Level Model", () => {
             .catch(done);
     });
     it("should update the element", (done)=> {
-        Level.filter({
+        Group.filter({
                 name: "rookie"
             })
             .run()
             .then((result) => {
                 assert.equal(result.length, 1);
-                levelCheck(result[0], levels.rookie);
-                result[0].name = levels.master.name;
-                result[0].logo = levels.master.logo;
-                result[0].minScore = levels.master.minScore;
+                groupCheck(result[0], groups.rookie);
+                result[0].name = groups.master.name;
+                result[0].logo = groups.master.logo;
+                result[0].score = groups.master.score;
+                result[0].description = groups.master.description;
 
                 return result[0].save();
             })
             .then((result) => {
-                levelCheckNot(result, levels.rookie);
-                levelCheck(result, levels.master);
+                groupCheckNot(result, groups.rookie);
+                groupCheck(result, groups.master);
                 done();
             })
             .catch(done);
     });
     it("should read all the elements", (done)=> {
-        Level.run()
+        Group.run()
             .then((result)=> {
                 for (var i in result) {
-                    levelCheck(result[i], levels[result[i].name]);
-                    levelCheckNot(result[i], levels.rookie);
+                    groupCheck(result[i], groups[result[i].name]);
+                    groupCheckNot(result[i], groups.rookie);
                 }
 
                 assert.equal(result.length, 2);
@@ -95,7 +111,7 @@ describe("Level Model", () => {
             .catch(done);
     });
     it("should delete all elements", (done)=> {
-        Level.run()
+        Group.run()
             .then((result)=> {
                 return promiseFor(function (count) {
                     return count < result.length;
@@ -107,7 +123,7 @@ describe("Level Model", () => {
                 }, 0)
             })
             .then(()=> {
-                return Level.run();
+                return Group.run();
             })
             .then((result)=> {
                 assert.equal(result.length, 0);
