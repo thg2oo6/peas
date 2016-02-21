@@ -4,6 +4,7 @@ export default Ember.Component.extend({
   websocket: Ember.inject.service('websocket'),
   badge: {},
   display: false,
+  classNames: ['badge-earn-container'],
   classNameBindings: ['display:display'],
 
   init: function() {
@@ -14,17 +15,26 @@ export default Ember.Component.extend({
 
   actions: {
       dismiss: function() {
-        this.set('display', false);
-        setTimeout(() => {
-          this.set('badge', {});
-        }, 1200);
+        this.dismiss();
       }
+  },
+
+  dismiss: function() {
+      this.set('display', false);
+      setTimeout(() => {
+        this.set('badge', {});
+      }, 1200);
   },
 
   subscribe: function() {
       this.get('websocket').on('badge.earned', (response) => {
+          response.user.score += response.activity.score;
           this.set('badge', response);
           this.set('display', true);
+
+          setTimeout(() => {
+            this.dismiss();
+          }, 4500);
       });
   }
 });

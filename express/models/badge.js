@@ -10,10 +10,10 @@ var BadgeWrapper = function (thinky) {
         count: type.number().min(0).integer().default(1)
     });
 
-    Badge.pre("save", function () {
-        if (!this.earned) {
-            this.earned = new Date();
-        }
+    Badge.pre("save", function() {
+      if (!this.earned) {
+        this.earned = r.now();
+      }
     });
 
     return Badge;

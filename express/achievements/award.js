@@ -4,6 +4,8 @@ Award = function (app, user, activity) {
     const User = app.model.User;
     const Badge = app.model.Badge;
 
+    var user;
+
     return Badge.filter({
             userID: user.id,
             activityID: activity.model.id

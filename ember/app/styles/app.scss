@@ -72,17 +72,16 @@ $color-accent: $palette-light-blue-A200;
   top: 0;
   overflow: hidden;
   height: 120px;
-  width: 500px;
+  width: 390px;
   z-index: 10;
 
-  > .ember-view {
-    right: -500px;
+  &.ember-view {
+    top: -500px;
     transition: 1s all linear;
     position: absolute;
-    top: 25px;
 
     &.display {
-      right: 35px;
+      top: 25px;
     }
   }
 }

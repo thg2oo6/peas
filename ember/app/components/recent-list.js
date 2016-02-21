@@ -13,6 +13,7 @@ export default Ember.Component.extend({
 
   subscribe: function() {
     this.get('websocket').on('app.badges.recent', (result) => {
+      console.log(result);
       this.set('badges', result);
     });
   },
