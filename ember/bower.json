@@ -9,5 +9,8 @@
     "uri.js": "^1.17.0",
     "hammerjs": "^2.0.6",
     "matchMedia": "0.2.0"
+  },
+  "devDependencies": {
+    "jquery.cookie": "jquery-cookie#1.4.1"
   }
 }

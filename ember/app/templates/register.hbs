@@ -9,22 +9,18 @@
         {{ errorMessage }}
       {{/if}}
       {{mdl-textfield type="text" value=user.username label="Username"}}
+      {{mdl-textfield type="text" value=user.firstName label="First name"}}
+      {{mdl-textfield type="text" value=user.lastName label="Last name"}}
       {{mdl-textfield type="password" value=user.password label="Password"}}
+      {{mdl-textfield type="email" value=user.email label="E-mail"}}
     </div>
     <div class="actions">
-      <div class="helpers">
-          <div class="register">
-            <div>
-                {{#link-to 'register'}}Register{{/link-to}}
-            </div>
-            <div>
-                {{#link-to 'forgot-password'}}Forgot user or password?{{/link-to}}
-            </div>
-          </div>
-      </div>
+      {{#link-to 'login' tagName="button" class="mdl-button mdl-js-button mdl-button--raised"}}
+        {{mdl-icon icon="keyboard_arrow_left"}} Back
+      {{/link-to}}
       <div class="button">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" {{action 'login'}}>
-          Login <i class="material-icons">exit_to_app</i>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" {{action 'register'}}>
+          Register <i class="material-icons">exit_to_app</i>
         </button>
       </div>
     </div>

@@ -17,7 +17,8 @@ module.exports = function(environment) {
     },
     APP: {
       websocketHost: '0.0.0.0',
-      websocketPort: 3001
+      websocketPort: 3001,
+      httpHost: "http://localhost:3000"
       // Here you can pass flags/options to your application instance
       // when it is created
     },
@@ -25,7 +26,7 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
       'font-src': "'self'",
-      'connect-src': "'self' ws://localhost:7000 localhost:7000",
+      'connect-src': "'self' ws://localhost:7000 localhost:7000 localhost:3000 localhost:4200",
       'img-src': "'self'",
       'report-uri':"'localhost'",
       'style-src': "'self' 'unsafe-inline'",
