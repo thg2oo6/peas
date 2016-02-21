@@ -83,10 +83,7 @@ describe("Group Model", () => {
             .then((result) => {
                 assert.equal(result.length, 1);
                 groupCheck(result[0], groups.rookie);
-                result[0].name = groups.master.name;
-                result[0].logo = groups.master.logo;
-                result[0].score = groups.master.score;
-                result[0].description = groups.master.description;
+                result[0].merge(groups.master);
 
                 return result[0].save();
             })

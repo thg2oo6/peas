@@ -11,7 +11,7 @@ var UserWrapper = function (thinky) {
         firstName: type.string().required(),
         lastName: type.string().required(),
         isAdmin: type.boolean().default(false),
-        levelID: type.string(),
+        levelID: type.string().allowNull(true),
         score: type.number().min(0).integer().default(0)
     });
 
