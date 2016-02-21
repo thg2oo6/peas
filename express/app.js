@@ -39,6 +39,7 @@ function configure(app) {
 
     // setup passport
     require('./passport')(app);
+    require('../modules')(app);
 }
 
 module.exports = configure;
