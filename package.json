@@ -4,7 +4,8 @@
   "description": "Personal Enterprise Achievements",
   "main": "app.js",
   "scripts": {
-    "test": "mocha tests/unit/**/*.test.js"
+    "test": "mocha tests/unit/**/*.test.js",
+    "bamboo": "mocha -R mocha-bamboo-reporter tests/unit/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -32,5 +33,9 @@
     "socket.io": "^1.4.5",
     "thinky": "^2.2.4",
     "validator": "^4.9.0"
+  },
+  "devDependencies": {
+    "mocha": ">=1.8.1",
+    "mocha-bamboo-reporter": "*"
   }
 }
