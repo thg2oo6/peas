@@ -56,7 +56,13 @@ Group = function (definition) {
     };
 
     self.push = function (activity) {
-        hidden.activities.push(_.cloneDeep(activity));
+        hidden.activities.push(activity);
+    };
+
+    self.extract = function (activities) {
+        for (var i in activities) {
+            self.push(activities[i]);
+        }
     };
 
     self.size = function () {

@@ -1,16 +1,13 @@
-var Router = require('../../express/achievements').Routes;
+const Achievements = require('../../express/achievements');
+const Router = Achievements.Routes;
 
 var Routes;
 
 module.exports = function (app, basePath) {
     Routes = Router(app, basePath);
 
-    Routes.get('github', function (req, res) {
-        console.log(req);
-        res.json({status: "ok"});
-    });
     Routes.post('github', function (req, res) {
-        console.log(req);
+        app.emit("github", req);
         res.json({status: "ok"});
     });
 };
