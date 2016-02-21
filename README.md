@@ -30,6 +30,10 @@ You can login with the following account:
 - username: **admin**
 - password: **admin**
 
+# Future?
+
+There will be added extra functionalities - Watch the Issues page.
+
 # Installation & running
 
 1. Run the following command:

@@ -1,14 +1,14 @@
 <nav class="mdl-navigation">
   {{#active-link tagName='div'}}
     {{#link-to 'app.dashboard' class="mdl-navigation__link"}}
-      Dashboard {{mdl-icon icon="dashboard"}}
+        Dashboard {{mdl-icon icon="dashboard"}}
       {{mdl-icon icon="keyboard_arrow_right" class="active"}}
     {{/link-to}}
   {{/active-link}}
 
   {{#active-link tagName='div'}}
     {{#link-to 'app.activities' class="mdl-navigation__link"}}
-      Activities {{mdl-icon icon="local_activity"}}
+        Activities {{mdl-icon icon="local_activity"}}
       {{mdl-icon icon="keyboard_arrow_right" class="active"}}
     {{/link-to}}
   {{/active-link}}
@@ -16,7 +16,7 @@
 
   {{#active-link tagName='div'}}
     {{#link-to 'app.badges' class="mdl-navigation__link"}}
-      My Badges
+        My Badges
       {{mdl-icon icon="star_rate"}}
       {{mdl-icon icon="keyboard_arrow_right" class="active"}}
     {{/link-to}}
@@ -24,38 +24,41 @@
 
   {{#active-link tagName='div'}}
     {{#link-to 'signout' class="mdl-navigation__link"}}
-      Sign Out
+        Sign Out
       {{mdl-icon icon="exit_to_app"}}
       {{mdl-icon icon="keyboard_arrow_right" class="active"}}
     {{/link-to}}
   {{/active-link}}
 
-  <div class="management">
-    <span class="title">Manage</span>
 
-    {{#active-link tagName='div'}}
-      {{#link-to 'app.settings.user-management' class="mdl-navigation__link"}}
-        Users
-        {{mdl-icon icon="supervisor_account"}}
-        {{mdl-icon icon="keyboard_arrow_right" class="active"}}
-      {{/link-to}}
-    {{/active-link}}
+  {{#is-admin}}
+      <div class="management">
+          <span class="title">Manage</span>
 
-    {{#active-link tagName='div'}}
-      {{#link-to 'app.settings.plugin-management' class="mdl-navigation__link"}}
-        Plugins
-        {{mdl-icon icon="settings_input_component"}}
-        {{mdl-icon icon="keyboard_arrow_right" class="active"}}
-      {{/link-to}}
-    {{/active-link}}
+        {{#active-link tagName='div'}}
+          {{#link-to 'app.settings.user-management' class="mdl-navigation__link"}}
+              Users
+            {{mdl-icon icon="supervisor_account"}}
+            {{mdl-icon icon="keyboard_arrow_right" class="active"}}
+          {{/link-to}}
+        {{/active-link}}
 
-    {{#active-link tagName='div'}}
-      {{#link-to 'app.settings.level-management' class="mdl-navigation__link"}}
-        Levels
-        {{mdl-icon icon="clear_all"}}
-        {{mdl-icon icon="keyboard_arrow_right" class="active"}}
-      {{/link-to}}
-    {{/active-link}}
-  </div>
+        {{!--
+        {{#active-link tagName='div'}}
+          {{#link-to 'app.settings.plugin-management' class="mdl-navigation__link"}}
+            Plugins
+            {{mdl-icon icon="settings_input_component"}}
+            {{mdl-icon icon="keyboard_arrow_right" class="active"}}
+          {{/link-to}}
+        {{/active-link}} --}}
 
+        {{#active-link tagName='div'}}
+          {{#link-to 'app.settings.level-management' class="mdl-navigation__link"}}
+              Levels
+            {{mdl-icon icon="clear_all"}}
+            {{mdl-icon icon="keyboard_arrow_right" class="active"}}
+          {{/link-to}}
+        {{/active-link}}
+      </div>
+  {{/is-admin}}
 </nav>

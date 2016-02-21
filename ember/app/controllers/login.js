@@ -36,6 +36,13 @@ export default Ember.Controller.extend({
                 window.location.href = location;
               }
             });
+          },
+          error: (response) => {
+            if (response.status === 400) {
+              this.set('errorMessage', "Wrong username or password.");
+            } else {
+              this.set('errorMessage', "Something went wrong when sending that request.");
+            }
           }
         })
     }

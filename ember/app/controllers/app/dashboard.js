@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   websocket: Ember.inject.service('websocket'),
+  session: Ember.inject.service('session'),
   dashboardData: [],
 
   init: function() {

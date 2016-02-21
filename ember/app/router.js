@@ -18,6 +18,7 @@ Router.map(function () {
       this.route('view', {path: '/view/:id'})
     });
 
+
     this.route('settings', function () {
       this.route('user-management', function () {
         this.route('list', {path: '/'});

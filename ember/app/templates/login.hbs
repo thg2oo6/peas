@@ -5,9 +5,7 @@
         <img src="/images/logoLarge.png" />
     </div>
     <div class="form">
-      {{#if errorMessage}}
-        {{ errorMessage }}
-      {{/if}}
+      {{#error-message message=errorMessage}}{{/error-message}}
       {{mdl-textfield type="text" value=user.username label="Username"}}
       {{mdl-textfield type="password" value=user.password label="Password"}}
     </div>
