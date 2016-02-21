@@ -3,8 +3,8 @@ function configure(app, socket, broadcast) {
     var getUsers = function () {
         User.orderBy("createdAt").getJoin().run().then((result) => {
             broadcast.emit('settings.users.get.response', result.map((user) => {
-              delete user.password;
-              return user;
+                delete user.password;
+                return user;
             }));
         });
     };
@@ -18,7 +18,7 @@ function configure(app, socket, broadcast) {
     });
 
     socket.on('settings.users.get', () => {
-      getUsers()
+        getUsers()
     });
 
     socket.on('settings.users.post', (data) => {
@@ -29,20 +29,29 @@ function configure(app, socket, broadcast) {
     });
 
     socket.on('settings.users.put', (data) => {
-        User.get(data.id).run().then((user) => {
-            user.merge(data).save().then((result) => {
-                socket.emit('settings.users.put.response', result);
-                getUsers();
+        if (socket.request.user.isAdmin)
+            User.get(data.id).run().then((user) => {
+                user.merge(data).save().then((result) => {
+                    socket.emit('settings.users.put.response', result);
+                    getUsers();
+                });
             });
-        })
+        else if (socket.request.user.id == data.id)
+            User.get(data.id).run().then((user) => {
+                user.merge(data).save().then((result) => {
+                    socket.emit('settings.users.put.response', result);
+                    getUsers();
+                });
+            });
     });
 
     socket.on('settings.users.delete', (data) => {
-        User.get(data.id).then((user) => {
-            user.delete().then((result) => {
-                getUsers();
+        if (socket.request.user.isAdmin)
+            User.get(data.id).then((user) => {
+                user.delete().then((result) => {
+                    getUsers();
+                });
             });
-        });
     });
 }
 
