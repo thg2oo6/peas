@@ -6,8 +6,14 @@ var BadgeWrapper = function (thinky) {
         id: type.string(),
         userID: type.string(),
         activityID: type.string(),
-        earned: type.date().default(r.now()),
+        earned: type.date(),
         count: type.number().min(0).integer().default(1)
+    });
+
+    Badge.pre("save", function () {
+        if (!this.earned) {
+            this.earned = new Date();
+        }
     });
 
     return Badge;

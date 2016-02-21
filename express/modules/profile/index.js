@@ -14,7 +14,7 @@ function configure(app, socket, broadcast) {
     app.on("badge.earned." + userId, (data)=> {
         socket.emit("badge.earned", data);
     });
-    
+
     app.on("level.check." + userId, (user)=> {
         Level.filter(function (level) {
                 return level("minScore").le(user.score);

@@ -10,23 +10,27 @@ Award = function (app, user, activity) {
         })
         .run()
         .then((result)=> {
-            var badge;
+            var badge, newElement = false;
             if (result.length != 0) {
                 badge = result.pop();
                 badge.count++;
             } else {
-
+                newElement = true
                 badge = new Badge({
                     user: user,
                     activity: activity.model
                 });
 
-                app.emit("badge.earned." + user.id, badge);
-                app.emit("level.check." + user.id, user);
                 user.score += activity.score;
             }
 
-            return badge.saveAll();
+            return badge.saveAll()
+                .then((result)=> {
+                    if (newElement) {
+                        app.emit("badge.earned." + user.id, result);
+                        app.emit("level.check." + user.id, user);
+                    }
+                });
         });
 };
 
