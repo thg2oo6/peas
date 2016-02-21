@@ -7,6 +7,6 @@ export default Ember.Component.extend({
   didReceiveAttrs() {
     setTimeout(() => {
       this.set('message', null);
-    }, 3500);
+    }, 5000);
   }
 });

@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   websocket: Ember.inject.service('websocket'),
   session: Ember.inject.service('session'),
   level: {},
+  errorMessage: null,
 
   init: function() {
     this.get('session').setController(this);
@@ -14,6 +15,12 @@ export default Ember.Controller.extend({
     this.get('websocket').on('settings.levels.post.response', () => {
       this.set('level', {});
       this.transitionToRoute('app.settings.level-management')
+    });
+
+    this.get('websocket').on('settings.levels.post.error', (response) => {
+      if(response.name === "ValidationError") {
+        this.set('errorMessage', response.message);
+      }
     });
   },
 

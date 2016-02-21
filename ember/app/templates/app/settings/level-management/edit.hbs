@@ -1,4 +1,5 @@
 <div class="form peas-form">
+  {{#error-message message=errorMessage}}{{/error-message}}
   {{mdl-textfield type="text" value=level.name label="Name"}}
   {{mdl-textfield type="number" value=level.minScore label="Minimum Score"}}
   {{mdl-textfield type="text" value=level.logo label="Logo"}}
