@@ -26,13 +26,11 @@ var Links = function (model) {
         if (!this.createdAt) {
             this.createdAt = new Date();
         }
-        console.log("ASDF");
         Level.filter({
                 minScore: 0
             })
             .run()
             .then((result)=> {
-                console.log("ASDF", result.length);
                 if (result.length == 0)
                     return next();
 

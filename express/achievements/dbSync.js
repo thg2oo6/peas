@@ -60,6 +60,7 @@ DBSync = function (app, group) {
 
         return act.save()
             .then((result) => {
+                hidden.group.model.score += activity.score;
                 ++hidden.activities.created;
                 activity.model = result;
                 return result;
