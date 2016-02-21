@@ -8,6 +8,7 @@
     "material-design-lite": "1.1.1",
     "uri.js": "^1.17.0",
     "hammerjs": "^2.0.6",
-    "matchMedia": "0.2.0"
+    "matchMedia": "0.2.0",
+    "socket.io-client": "^1.4.5"
   }
 }

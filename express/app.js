@@ -8,7 +8,10 @@ const thinky = require('thinky')(config.thinky);
 function registerModules(app, socket) {
     require('./modules/dashboard')(app, socket);
     require('./modules/activities')(app, socket);
+    require('./modules/badges')(app, socket);
     require('./modules/levels')(app, socket);
+    require('./modules/recents')(app, socket);
+    require('./modules/users')(app, socket);
 }
 
 function configure(app) {
