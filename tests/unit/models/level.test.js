@@ -3,7 +3,7 @@ const _ = require('lodash');
 const app = require('../../mockup/app');
 const levels = require('../../mockup/levels');
 const Level = app.model.Level;
-const promiseFor = require('../../utils/promiseFor');
+const promiseFor = require('../../../express/utils/promiseFor');
 
 var levelCheck, levelCheckNot;
 

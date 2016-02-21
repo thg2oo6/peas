@@ -9,8 +9,11 @@ const RDBStore = require('express-session-rethinkdb')(session);
 function registerModules(app, socket, broadcast) {
     require('./modules/dashboard')(app, socket, broadcast);
     require('./modules/activities')(app, socket, broadcast);
+    require('./modules/badges')(app, socket, broadcast);
     require('./modules/levels')(app, socket, broadcast);
-    //require('./modules/profile')(app, socket, broadcast);
+    require('./modules/profile')(app, socket, broadcast);
+    require('./modules/recents')(app, socket,broadcast);
+    require('./modules/users')(app, socket, broadcast);
 }
 
 function configure(app) {

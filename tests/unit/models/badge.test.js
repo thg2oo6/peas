@@ -10,7 +10,7 @@ const Group = app.model.Group;
 const User = app.model.User;
 const Level = app.model.Level;
 const Badge = app.model.Badge;
-const promiseFor = require('../../utils/promiseFor');
+const promiseFor = require('../../../express/utils/promiseFor');
 
 /**
  * TODO: Test unhappy path

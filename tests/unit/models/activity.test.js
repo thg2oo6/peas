@@ -5,7 +5,7 @@ const groups = require('../../mockup/groups');
 const activities = require('../../mockup/activities');
 const Activity = app.model.Activity;
 const Group = app.model.Group;
-const promiseFor = require('../../utils/promiseFor');
+const promiseFor = require('../../../express/utils/promiseFor');
 
 var activityCheck, activityCheckNot;
 

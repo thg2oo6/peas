@@ -4,8 +4,8 @@
   "description": "Personal Enterprise Achievements",
   "main": "app.js",
   "scripts": {
-    "test": "mocha tests/unit/**/*.test.js",
-    "bamboo": "mocha -R mocha-bamboo-reporter tests/unit/**/*.test.js"
+    "test": "mocha tests/unit/bootstrap.test.js tests/unit/**/*.test.js",
+    "bamboo": "mocha -R mocha-bamboo-reporter tests/unit/bootstrap.test.js tests/unit/**/*.test.js"
   },
   "repository": {
     "type": "git",
