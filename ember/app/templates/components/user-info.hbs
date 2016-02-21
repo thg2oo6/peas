@@ -1,7 +1,7 @@
 <div class="user-info-container">
     <div class="left">
       <div class="name">
-        {{user.name}}
+        {{user.firstName}} {{user.lastName}}
       </div>
       <div class="details">
           <div class="score">
@@ -14,7 +14,7 @@
     </div>
     <div class="right">
       <div class="avatar">
-        <img src="{{avatarUrl}}">
+        <img src="//www.gravatar.com/avatar/{{md5 user.email}}.jpg">
       </div>
       <div class="signout">
         {{#link-to 'signout' class="mdl-navigation__link"}}

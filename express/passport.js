@@ -9,14 +9,14 @@ function configure(app, sessionStore, io) {
   app.use(passport.session());
 
   passport.serializeUser(function(user, done) {
-      delete user.password;
-      done(null, user);
+      done(null, user.id);
   });
 
   // This is how a user gets deserialized
   passport.deserializeUser(function(id, done) {
-      var user = app.model.User.get(id);
-      return done(null, user);
+      var user = app.model.User.get(id).then((user) => {
+        return done(null, user);
+      });
   });
 
   // Lookup a user in our database
@@ -46,7 +46,12 @@ function configure(app, sessionStore, io) {
     });
 
   app.get('/getSession', function(req, res) {
-    res.json({ sid: req.cookies['connect.sid'] })
+    if (req.cookies['connect.sid']) {
+      var sid = req.cookies['connect.sid'].substr(2).split('.');
+      res.json({ sid: sid[0] })
+    } else {
+      res.json({});
+    }
   });
 
   app.post('/register', function(req, res) {

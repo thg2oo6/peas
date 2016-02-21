@@ -1,10 +1,15 @@
 function configure(app, socket, broadcast) {
-    socket.on('profile.getCurrentUser', (data) => {
-        var userId = socket.request.user.id;
-        app.model.User.get(userId).then(user => {
-          socket.emit('profile.getCurrentUser.response', user);
-        });
-    });
+    var User = app.model.User;
+    var userId = socket.request.user.id;
+
+    var sendUserResponse = function() {
+      User.get(userId).then(user => {
+        socket.emit('profile.getCurrentUser.response', user);
+      });
+    }
+
+    socket.on('profile.getCurrentUser', (data) => sendUserResponse());
+    User.get(userId).changes().then(() => sendUserResponse())
 }
 
 module.exports = configure;
