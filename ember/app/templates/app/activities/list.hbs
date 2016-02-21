@@ -1,0 +1,9 @@
+<div class="activity-page">
+  <h3>Activities</h3>
+
+  <div class="activity-list-container">
+    {{#each activities as |activity|}}
+      {{#activity-info activity=activity}}{{/activity-info}}
+    {{/each}}
+  </div>
+</div>

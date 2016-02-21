@@ -13,7 +13,10 @@ Router.map(function() {
   this.route('app', function() {
       this.route('dashboard', { path: '/' });
       this.route('badges');
-      this.route('activities');
+      this.route('activities', function() {
+        this.route('list', { path: '/' });
+        this.route('view', { path: '/view/:id' })
+      });
 
       this.route('settings', function() {
         this.route('user-management', function() {

@@ -1,0 +1,17 @@
+<div class="activity-info">
+  {{#link-to 'app.activities.view' activity tagName="div" class="activity-image"}}
+    {{#hosted-image src=activity.logo }}{{/hosted-image}}
+  {{/link-to}}
+  <div class="activity-content">
+    {{#link-to 'app.activities.view' activity tagName="h5"}}
+      {{activity.name}}
+    {{/link-to}}
+    <div class="score">
+      0/{{activity.score}}  <span class="score-icon small"></span>
+    </div>
+    {{mdl-progress progress=60}}
+    <div class="description">
+      {{activity.description}}
+    </div>
+  </div>
+</div>

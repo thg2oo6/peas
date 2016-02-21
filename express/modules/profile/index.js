@@ -6,7 +6,6 @@ function configure(app, socket, broadcast) {
       User.get(userId).getJoin({
           level: true
       }).then(user => {
-        console.log(user);
         socket.emit('profile.getCurrentUser.response', user);
       });
     }
