@@ -55,6 +55,13 @@ function configure(app, sessionStore, io) {
   });
 
   app.post('/register', function(req, res) {
+      if (!(req.body && req.body.user && req.body.user.password.length >= 8)) {
+        res.status(400).json({
+            name: "ValidationError",
+            message: "Password length must be longer or equal to 8 characters"
+        });
+      }
+
       var user = app.model.User({
         username: req.body.user.username,
         firstName: req.body.user.firstName,

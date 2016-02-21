@@ -23,6 +23,8 @@ function configure(app, socket, broadcast) {
             Level.save(data).then((result) => {
                 broadcast.emit('settings.levels.post.response', result);
                 getLevels();
+            }).catch((err) => {
+                socket.emit('settings.levels.post.error', err);
             });
     });
 
@@ -32,7 +34,9 @@ function configure(app, socket, broadcast) {
                 level.merge(data).save().then((result) => {
                     broadcast.emit('settings.levels.put.response', result);
                     getLevels();
-                });
+                }).catch((err) => {
+                    socket.emit('settings.levels.put.error', err);
+                });;
             })
     });
 
