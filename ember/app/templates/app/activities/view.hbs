@@ -4,7 +4,7 @@
 
   <div class="activity-badges">
     {{#each activity.group.activities as |badge|}}
-      {{#activity-item activity=badge}}{{/activity-item}}
+      {{#activity-item activity=badge earned=activity.badges}}{{/activity-item}}
     {{/each}}
   </div>
 </div>
