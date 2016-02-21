@@ -29,6 +29,10 @@
         line-height: 13px;
         padding-left: 10px;
         padding-right: 10px;
+
+        span.badge-name {
+          color: $darkGreen;
+        }
       }
     }
   }

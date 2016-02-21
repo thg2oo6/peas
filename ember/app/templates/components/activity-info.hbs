@@ -7,9 +7,9 @@
       {{activity.name}}
     {{/link-to}}
     <div class="score">
-      0/{{activity.score}}  <span class="score-icon small"></span>
+      {{activity.earned}}/{{activity.score}}  <span class="score-icon small"></span>
     </div>
-    {{mdl-progress progress=60}}
+    {{#progress-bar count=activity.earned total=activity.score}}{{/progress-bar}}
     <div class="description">
       {{activity.description}}
     </div>
