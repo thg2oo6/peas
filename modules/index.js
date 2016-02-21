@@ -1,6 +1,7 @@
 var Modules = function (app) {
     return {
-        helloWorld: require('./helloWorld')(app)
+        helloWorld: require('./helloWorld')(app),
+        sample: require('./sample')(app)
     }
 };
 
