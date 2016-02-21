@@ -2,8 +2,8 @@
   <h3>Activities</h3>
 
   <div class="activity-list-container">
-    {{#each activities as |activity|}}
-      {{#activity-info activity=activity.group badges=activity.badges}}{{/activity-info}}
+    {{#each activities.groups as |activity|}}
+      {{#activity-info activity=activity badges=activities.badges}}{{/activity-info}}
     {{/each}}
   </div>
 </div>

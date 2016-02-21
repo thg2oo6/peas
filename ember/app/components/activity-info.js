@@ -21,7 +21,7 @@ export default Ember.Component.extend({
             return badge.activityID === item.id;
           });
 
-          if (activity) {
+          if (result) {
             count += result.score;
           }
       });
