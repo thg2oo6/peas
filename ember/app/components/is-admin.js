@@ -1,12 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  session: Ember.inject.service('session'),
+  websocket: Ember.inject.service('websocket'),
   user: {},
 
   init: function() {
       this._super(...arguments);
 
-      this.set('user', this.get('session').getUser());
+      this.subscribe();
+      this.get('websocket').send('profile.getCurrentUser');
+  },
+
+  subscribe: function() {
+      this.get('websocket').on('profile.getCurrentUser.response', (response) => {
+        this.set('user', response);
+      });
   }
 });
