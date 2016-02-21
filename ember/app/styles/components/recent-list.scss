@@ -1,11 +1,11 @@
-.activity-list-container {
+.recent-list-container {
   h6.title {
     text-align: center;
     margin-top: 8px;
     color: $darkGreen;
     font-weight: 600;
   }
-  .activity-list {
+  .recent-list {
     padding-left: 15px;
     .activity-info {
       &:not(:last-of-type) {

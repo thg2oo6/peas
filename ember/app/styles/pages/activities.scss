@@ -1,0 +1,61 @@
+.activity-page {
+  > h3 {
+    margin-left: 20px;
+    color: $darkGreen;
+  }
+
+  &.activity-detail {
+    .activity-info {
+      padding: 20px;
+      max-width: 80%;
+    }
+  }
+
+  .activity-info {
+    .activity-image {
+      width: 150px;
+      float: left;
+      cursor: pointer;
+
+      img {
+        width: 150px;
+      }
+    }
+
+    .activity-content {
+      overflow: hidden;
+      padding-left: 15px;
+
+      h5 {
+        color: $darkBlue;
+        font-size: 17px;
+        margin-top: 0;
+        margin-bottom: 5px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .description {
+        margin-top: 5px;
+        font-size: 12px;
+      }
+
+      .mdl-progress {
+        width: 100%;
+      }
+    }
+  }
+
+  .activity-list-container {
+    > .ember-view {
+      float: left;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+  }
+
+}
