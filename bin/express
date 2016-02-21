@@ -7,4 +7,4 @@ scriptDir=$(cd $(dirname $scriptPath) && pwd)
 projectDir=$(cd $scriptDir/.. && pwd)
 
 cd "$projectDir"
-exec nodemon --watch express app.js
+exec nodemon --watch express --watch modules app.js
