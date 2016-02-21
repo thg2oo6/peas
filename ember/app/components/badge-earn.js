@@ -28,6 +28,7 @@ export default Ember.Component.extend({
 
   subscribe: function() {
       this.get('websocket').on('badge.earned', (response) => {
+        console.log(response);
           this.set('badge', response);
           this.set('display', true);
 
