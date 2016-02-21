@@ -68,9 +68,7 @@ describe("Level Model", () => {
             .then((result) => {
                 assert.equal(result.length, 1);
                 levelCheck(result[0], levels.rookie);
-                result[0].name = levels.master.name;
-                result[0].logo = levels.master.logo;
-                result[0].minScore = levels.master.minScore;
+                result[0].merge(levels.master);
 
                 return result[0].save();
             })

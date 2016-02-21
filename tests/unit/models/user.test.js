@@ -1,90 +1,86 @@
 const assert = require('assert');
 const _ = require('lodash');
 const app = require('../../mockup/app');
-const groups = require('../../mockup/groups');
-const activities = require('../../mockup/activities');
-const Activity = app.model.Activity;
-const Group = app.model.Group;
+const levels = require('../../mockup/levels');
+const users = require('../../mockup/users');
+const User = app.model.User;
+const Level = app.model.Level;
 const promiseFor = require('../../utils/promiseFor');
 
-var activityCheck, activityCheckNot;
+var userCheck, userCheckNot;
 
 /**
  * TODO: Test unhappy path
  */
-describe("Activity Model", () => {
+describe("User Model", () => {
     before(() => {
-        activityCheck = (result, expected) => {
-            assert.equal(result.name, expected.name);
-            assert.equal(result.score, expected.score);
-            assert.equal(result.badge, expected.badge);
-            assert.equal(result.description, expected.description);
+        userCheck = (result, expected) => {
+            assert.equal(result.username, expected.username);
+            //assert.equal(result.password, expected.password);
+            assert.equal(result.email, expected.email);
+            assert.equal(result.firstName, expected.firstName);
+            assert.equal(result.lastName, expected.lastName);
+
+            if(expected.isAdmin !== null && expected.isAdmin !== undefined)
+                assert.equal(result.isAdmin, expected.isAdmin);
+            if(expected.score !== null && expected.score !== undefined)
+                assert.equal(result.score, expected.score);
+            else
+                assert.equal(result.score, 0);
         };
-        activityCheckNot = (result, expected) => {
-            assert.notEqual(result.name, expected.name);
-            assert.notEqual(result.score, expected.score);
-            assert.notEqual(result.badge, expected.badge);
-            assert.notEqual(result.description, expected.description);
+        userCheckNot = (result, expected) => {
+            assert.notEqual(result.username, expected.username);
+            //assert.notEqual(result.password, expected.password);
+            assert.notEqual(result.email, expected.email);
+            assert.notEqual(result.firstName, expected.firstName);
+            assert.notEqual(result.lastName, expected.lastName);
         };
     });
 
     it("should not have any elements", (done) => {
-        Group.count().execute()
+        Level.count().execute()
             .then((total) => {
                 assert.equal(total, 0);
-                return Activity.count().execute()
+                return User.count().execute()
             })
             .then((total) => {
                 assert.equal(total, 0);
 
-                return (new Group(groups.noob)).save();
+                return (new Level(levels.noob)).save();
             })
             .then((result)=> {
-                groups.noob.id = result.id;
+                levels.noob.id = result.id;
                 done();
             })
             .catch(done);
     });
     it("should create an element", (done) => {
-        var activity = new Activity(activities.firstAct),
-            activity2 = new Activity(activities.secondAct);
+        var user = new User(users.admin),
+            user2 = new User(users.normal);
 
-        activity.group = groups.noob;
-        activity2.group = groups.noob;
+        user.group = levels.noob;
+        user2.group = levels.noob;
 
-        activity.save()
+        user.save()
             .then((result) => {
-                activityCheck(result, activities.firstAct);
-                assert.equal(result.group.id, groups.noob.id);
+                userCheck(result, users.admin);
+                assert.equal(result.group.id, levels.noob.id);
 
-                return activity2.save();
+                return user2.save();
             })
             .then((result) => {
-                activityCheck(result, activities.secondAct);
-                assert.equal(result.group.id, groups.noob.id);
+                userCheck(result, users.normal);
+                assert.equal(result.group.id, levels.noob.id);
 
                 done();
             })
             .catch(done);
     });
-    it("should not create an invalid element", (done) => {
-        var activity = new Activity(activities.secondActNoScoreNoDesc);
-
-        activity.save()
-            .then((result) => {
-                assert.ok(false);
-                done("Path not ok");
-            })
-            .catch((err)=> {
-                assert.ok(true);
-                done();
-            });
-    });
     it("should read all the elements", (done)=> {
-        Activity.run()
+        User.run()
             .then((result)=> {
                 for (var i in result)
-                    activityCheck(result[i], activities[result[i].name]);
+                    userCheck(result[i], users[result[i].username]);
 
                 assert.equal(result.length, 2);
                 done();
@@ -92,30 +88,30 @@ describe("Activity Model", () => {
             .catch(done);
     });
     it("should update the element", (done)=> {
-        Activity.filter({
-                name: "secondAct"
+        User.filter({
+                username: "normal"
             })
             .run()
             .then((result) => {
                 assert.equal(result.length, 1);
-                activityCheck(result[0], activities.secondAct);
-                result[0].merge(activities.newSecondAct);
+                userCheck(result[0], users.normal);
+                result[0].merge(users.frisco);
 
                 return result[0].save();
             })
             .then((result) => {
-                activityCheckNot(result, activities.secondAct);
-                activityCheck(result, activities.newSecondAct);
+                userCheckNot(result, users.normal);
+                userCheck(result, users.frisco);
                 done();
             })
             .catch(done);
     });
     it("should read all the elements", (done)=> {
-        Activity.run()
+        User.run()
             .then((result)=> {
                 for (var i in result) {
-                    activityCheck(result[i], activities[result[i].name]);
-                    activityCheckNot(result[i], activities.secondAct);
+                    userCheck(result[i], users[result[i].username]);
+                    userCheckNot(result[i], users.normal);
                 }
 
                 assert.equal(result.length, 2);
@@ -125,7 +121,7 @@ describe("Activity Model", () => {
     });
 
     it("should delete all elements", (done)=> {
-        Activity.run()
+        User.run()
             .then((result)=> {
                 return promiseFor(function (count) {
                     return count < result.length;
@@ -137,7 +133,7 @@ describe("Activity Model", () => {
                 }, 0)
             })
             .then(()=> {
-                return Group.run()
+                return Level.run()
                     .then((result)=> {
                         return promiseFor(function (count) {
                             return count < result.length;
@@ -150,11 +146,11 @@ describe("Activity Model", () => {
                     })
             })
             .then(()=> {
-                return Group.run();
+                return Level.run();
             })
             .then((result)=> {
                 assert.equal(result.length, 0);
-                return Activity.run();
+                return User.run();
             })
             .then((result)=> {
                 assert.equal(result.length, 0);
