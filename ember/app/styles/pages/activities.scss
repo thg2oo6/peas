@@ -1,0 +1,105 @@
+.activity-page {
+  margin-left: 20px;
+  > h3 {
+    color: $darkGreen;
+  }
+
+  &.activity-detail {
+    .activity-info {
+      max-width: 80%;
+    }
+
+    .activity-badges {
+     margin-top: 40px;
+
+      >.ember-view {
+        padding-right: 20px;
+        box-sizing: border-box;
+        float: left;
+        width: 50%;
+
+        .activity-item {
+          height: 175px;
+          .activity-item-left {
+            float: left;
+            .activity-item-image {
+                display: table-cell;
+                vertical-align: middle;
+                width: 75px;
+                height: 75px;
+                img {
+                  width: 75px;
+                }
+            }
+            .score {
+              width: 75px;
+              text-align: center;
+            }
+          }
+
+          .activity-item-content {
+            padding-left: 20px;
+            overflow:hidden;
+
+            .description {
+              font-size: 12px;
+              line-height: 18px;
+            }
+
+            h6 {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .activity-info {
+    .activity-image {
+      width: 150px;
+      float: left;
+      cursor: pointer;
+
+      img {
+        width: 150px;
+      }
+    }
+
+    .activity-content {
+      overflow: hidden;
+      padding-left: 15px;
+
+      h5 {
+        color: $darkBlue;
+        font-size: 17px;
+        margin-top: 0;
+        margin-bottom: 5px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .description {
+        margin-top: 5px;
+        font-size: 12px;
+      }
+
+      .mdl-progress {
+        width: 100%;
+      }
+    }
+  }
+
+  .activity-list-container {
+    > .ember-view {
+      float: left;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+  }
+
+}

@@ -11,14 +11,9 @@ app.use(cors({
 }));
 app.use(logger("combined"));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images/achievements/helloWorld/', express.static(path.join(__dirname, 'modules/helloWorld/images/')));
 
 require('./express/app')(app);
-
-app.get('*', function(req, res) {
-    res.sendFile('./public/index.html', {
-      root: __dirname
-    }); // load our public/index.html file
-});
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

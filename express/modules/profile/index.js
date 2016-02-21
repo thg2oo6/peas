@@ -6,11 +6,13 @@ function configure(app, socket, broadcast) {
       User.get(userId).getJoin({
           level: true
       }).then(user => {
-        console.log(user);
         socket.emit('profile.getCurrentUser.response', user);
       });
-    }
+    };
 
+    app.on("badge.earned." + userId,(data)=>{
+        socket.emit("badge.earned"); //TODO: Publish for user the event of earning
+    });
     socket.on('profile.getCurrentUser', (data) => sendUserResponse());
     User.get(userId).changes().then(() => sendUserResponse())
 }

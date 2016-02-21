@@ -12,8 +12,9 @@ $color-accent: $palette-light-blue-A200;
 @import "material-design-lite";
 
 @import "./components/sidebar-navigation";
-@import "./components/activity-list";
+@import "./components/recent-list";
 @import "./components/user-info";
+@import "./components/activity-info";
 
 @import "./components/table";
 @import "./components/button";
@@ -21,6 +22,7 @@ $color-accent: $palette-light-blue-A200;
 
 @import "./pages/login";
 @import "./pages/user-management";
+@import "./pages/activities";
 
 .material-icons {
   width: 24px;
