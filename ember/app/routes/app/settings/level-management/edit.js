@@ -6,5 +6,6 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('level', model);
+    controller.loadLevel();
   }
 });

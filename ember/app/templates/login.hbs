@@ -5,14 +5,8 @@
         <img src="/images/logoLarge.png" />
     </div>
     <div class="form">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="username">
-        <label class="mdl-textfield__label" for="username">Username</label>
-      </div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password">
-        <label class="mdl-textfield__label" for="password">Password</label>
-      </div>
+      {{mdl-textfield type="text" value=user.username label="Username"}}
+      {{mdl-textfield type="password" value=user.password label="Password"}}
     </div>
     <div class="actions">
       <div class="helpers">
