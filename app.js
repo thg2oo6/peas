@@ -1,15 +1,24 @@
 const express = require('express');
 const path = require('path');
+const logger = require('morgan');
+const cors = require('cors');
 
 var app = express();
 
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:4200'
+}));
+app.use(logger("combined"));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', function(req, res) {
-    res.sendFile('./public/index.html'); // load our public/index.html file
-});
-
 require('./express/app')(app);
+
+app.get('*', function(req, res) {
+    res.sendFile('./public/index.html', {
+      root: __dirname
+    }); // load our public/index.html file
+});
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -17,16 +26,20 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.send(err);
-    });
-}
-
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.send(err.message);
+  console.log(err.stack);
+
+  var statusCode = err.status || 500;
+  switch(err.name) {
+    case 'ValidationError':
+      statusCode = 400;
+      break;
+  }
+
+  res.status(statusCode);
+  res.send(err);
 });
 
+
 app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'));
