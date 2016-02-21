@@ -46,7 +46,7 @@ function configure(app, sessionStore, io) {
     });
 
   app.get('/getSession', function(req, res) {
-    console.log(req);
+    res.json({ sid: req.cookies['connect.sid'] })
   });
 
   app.post('/register', function(req, res) {

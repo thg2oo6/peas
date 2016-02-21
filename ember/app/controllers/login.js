@@ -30,10 +30,9 @@ export default Ember.Controller.extend({
                    withCredentials: true
               },
               success: function(response) {
-                console.log(response);
                 Ember.$.cookie("peas.sid", response.sid);
-                //let location = `${window.location.protocol}//${window.location.host}/app`;
-                //window.location.href = location;
+                let location = `${window.location.protocol}//${window.location.host}/app`;
+                window.location.href = location;
               }
             });
           }
