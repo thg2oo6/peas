@@ -3,7 +3,7 @@ const _ = require('lodash');
 const app = require('../../mockup/app');
 const groups = require('../../mockup/groups');
 const Group = app.model.Group;
-const promiseFor = require('../../utils/promiseFor');
+const promiseFor = require('../../../express/utils/promiseFor');
 
 var groupCheck, groupCheckNot;
 

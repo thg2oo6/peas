@@ -5,7 +5,7 @@ const levels = require('../../mockup/levels');
 const users = require('../../mockup/users');
 const User = app.model.User;
 const Level = app.model.Level;
-const promiseFor = require('../../utils/promiseFor');
+const promiseFor = require('../../../express/utils/promiseFor');
 
 var userCheck, userCheckNot;
 

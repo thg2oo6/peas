@@ -1,12 +1,12 @@
-const config = require('../../mockup/config');
-const app = require('../../mockup/app');
+const config = require('../mockup/config');
+const app = require('../mockup/app');
 const thinky = require('thinky')(config.thinky);
-const promiseFor = require('../../utils/promiseFor');
+const promiseFor = require('../../express/utils/promiseFor');
 
 // Models
 app.config = config;
 app.thinky = thinky;
-app.model = require("../../../express/models")(thinky);
+app.model = require("../../express/models")(thinky);
 
 var cleanUp = function () {
     return app.model.Level.run()
