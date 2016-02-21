@@ -7,9 +7,9 @@
       {{activity.name}}
     {{/link-to}}
     <div class="score">
-      {{activity.earned}}/{{activity.score}}  <span class="score-icon small"></span>
+      {{count}}/{{activity.score}}  <span class="score-icon small"></span>
     </div>
-    {{#progress-bar count=activity.earned total=activity.score}}{{/progress-bar}}
+    {{#progress-bar count=count total=activity.score}}{{/progress-bar}}
     <div class="description">
       {{activity.description}}
     </div>

@@ -3,7 +3,7 @@
 
   <div class="activity-list-container">
     {{#each activities as |activity|}}
-      {{#activity-info activity=activity}}{{/activity-info}}
+      {{#activity-info activity=activity.group badges=activity.badges}}{{/activity-info}}
     {{/each}}
   </div>
 </div>

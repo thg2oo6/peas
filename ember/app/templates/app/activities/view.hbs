@@ -1,9 +1,9 @@
 <div class="activity-page activity-detail">
-  <h3>{{ activity.name }}</h3>
-  {{#activity-info activity=activity}}{{/activity-info}}
+  <h3>{{ activity.group.name }}</h3>
+  {{#activity-info activity=activity.group badges=activity.badges}}{{/activity-info}}
 
   <div class="activity-badges">
-    {{#each activity.activities as |badge|}}
+    {{#each activity.group.activities as |badge|}}
       {{#activity-item activity=badge}}{{/activity-item}}
     {{/each}}
   </div>
