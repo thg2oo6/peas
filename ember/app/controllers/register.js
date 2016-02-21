@@ -26,6 +26,13 @@ export default Ember.Controller.extend({
           },
           success: () => {
             this.transitionToRoute('/');
+          },
+          error: (response) => {
+            var error = response.responseJSON;
+
+            if (error.name === "ValidationError") {
+              this.set('errorMessage', error.message);
+            }
           }
         });
     }
