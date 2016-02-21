@@ -19,7 +19,7 @@ function configure(app, socket, broadcast) {
     });
 
     socket.on('settings.levels.post', (data) => {
-        if (socket.user.isAdmin)
+        if (socket.request.user.isAdmin)
             Level.save(data).then((result) => {
                 broadcast.emit('settings.levels.post.response', result);
                 getLevels();
@@ -27,7 +27,7 @@ function configure(app, socket, broadcast) {
     });
 
     socket.on('settings.levels.put', (data) => {
-        if (socket.user.isAdmin)
+        if (socket.request.user.isAdmin)
             Level.get(data.id).run().then((level) => {
                 level.merge(data).save().then((result) => {
                     broadcast.emit('settings.levels.put.response', result);
@@ -37,7 +37,7 @@ function configure(app, socket, broadcast) {
     });
 
     socket.on('settings.levels.delete', (data) => {
-        if (socket.user.isAdmin)
+        if (socket.request.user.isAdmin)
             Level.get(data.id).then((level) => {
                 level.delete().then((result) => {
                     getLevels();
