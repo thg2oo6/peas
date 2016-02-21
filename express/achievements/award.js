@@ -31,6 +31,7 @@ Award = function (app, user, activity) {
                     if (newElement) {
                         app.emit("badge.earned." + user.id, result);
                         app.emit("level.check." + user.id, user);
+                        app.emit("badge.add");
                     }
                 });
         });

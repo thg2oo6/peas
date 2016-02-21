@@ -20,5 +20,4 @@ export default Ember.Component.extend({
   loadBadges: function() {
     this.get('websocket').send('app.badges.getall');
   }
-
 });

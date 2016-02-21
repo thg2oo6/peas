@@ -1,7 +1,7 @@
 function configure(app, socket, broadcast) {
     var Badge = app.model.Badge;
 
-    Badge.changes().then(() => {
+    app.on('badge.add', () => {
       Badge.orderBy(app.thinky.r.desc("earned")).getJoin().run().then((result) => {
           broadcast.emit('app.badges.recent', result);
       });
@@ -9,7 +9,7 @@ function configure(app, socket, broadcast) {
 
     socket.on('app.badges.getall', (data) => {
       Badge.orderBy(app.thinky.r.desc("earned")).getJoin().run().then((result) => {
-        socket.emit('app.badges.recent', result);
+        broadcast.emit('app.badges.recent', result);
       });
     })
 
