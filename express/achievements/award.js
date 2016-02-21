@@ -16,11 +16,16 @@ Award = function (app, user, activity) {
             if (result.length != 0) {
                 badge = result.pop();
                 badge.count++;
-            } else
+            } else {
+
                 badge = new Badge({
                     user: user,
                     activity: activity.model
                 });
+
+                app.emit("badge.earned." + user.id, badge);
+                user.score += activity.score;
+            }
 
             return badge.saveAll();
         });

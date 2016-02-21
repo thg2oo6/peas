@@ -1,4 +1,7 @@
 const _ = require("lodash");
+const express = require("express");
+const path = require('path');
+
 const Achievements = require('../../express/achievements');
 const DBSync = Achievements.DBSync;
 const Award = Achievements.Award;
@@ -15,6 +18,8 @@ HelloWorld = function (app) {
 
     sync.run();
     new routes(app, 'hello-world');
+    console.log(__dirname);
+    app.use('/images/achievements/helloWorld/', express.static(path.join(__dirname, 'images/')));
 
     app.on("github", function (req) {
         var msg = req.body,
@@ -48,14 +53,16 @@ HelloWorld = function (app) {
                     var badge = badges[i];
                     switch (badge.activity.name) {
                         case achievements.activities.FirstActivity.name:
-                            promise.then(()=> {
-                                return Award(app, user, achievements.activities.SecondActivity)
-                            });
+                            if (badge.count % 3 == 2)
+                                promise.then(()=> {
+                                    return Award(app, user, achievements.activities.SecondActivity)
+                                });
                             break;
                         case  achievements.activities.SecondActivity.name:
-                            promise.then(()=> {
-                                return Award(app, user, achievements.activities.ThirdActivity)
-                            });
+                            if (badge.count % 3 == 2)
+                                promise.then(()=> {
+                                    return Award(app, user, achievements.activities.ThirdActivity)
+                                });
                             break;
                     }
                 }
