@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
 
   init: function() {
     this.subscribe();
-    this.loadLevel();
   },
 
   loadLevel: function() {

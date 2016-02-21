@@ -1,23 +1,14 @@
 <div class="form peas-form">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    {{input type="text" class="mdl-textfield__input" id="name" value=level.name}}
-    <label class="mdl-textfield__label" for="name">Name</label>
-  </div>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    {{input type="text" class="mdl-textfield__input" id="minScore" value=level.minScore}}
-    <label class="mdl-textfield__label" for="minScore">Minimum score</label>
-  </div>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    {{input type="text" class="mdl-textfield__input" id="logo" value=level.logo}}
-    <label class="mdl-textfield__label" for="logo">Logo</label>
-  </div>
+  {{mdl-textfield type="text" value=level.name label="Name"}}
+  {{mdl-textfield type="text" value=level.minScore label="Minimum Score"}}
+  {{mdl-textfield type="text" value=level.logo label="Logo"}}
 
   <div class="button-container">
     {{#link-to 'app.settings.level-management.list' tagName="button" class="mdl-button mdl-js-button mdl-button--raised"}}
-      <i class="material-icons">keyboard_arrow_left</i> Back
+      {{mdl-icon icon="keyboard_arrow_left"}} Back
     {{/link-to}}
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right" {{action 'save'}}>
-      Save <i class="material-icons">check</i>
+      Save {{mdl-icon icon="check"}}
     </button>
   </div>
 </div>

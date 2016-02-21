@@ -4,6 +4,13 @@ $gray: #707070;
 $darkBlue: #24517f;
 $black: #282828;
 
+@import "_color-definitions";
+
+$color-primary: $palette-green-500;
+$color-accent: $palette-light-blue-A200;
+
+@import "material-design-lite";
+
 @import "./components/sidebar-navigation";
 @import "./components/activity-list";
 @import "./components/user-info";
