@@ -11,7 +11,6 @@ app.use(cors({
 }));
 app.use(logger("combined"));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/images/achievements/helloWorld/', express.static(path.join(__dirname, 'modules/helloWorld/images/')));
 
 require('./express/app')(app);
 

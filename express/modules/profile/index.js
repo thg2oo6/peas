@@ -13,7 +13,7 @@ function configure(app, socket, broadcast) {
     app.on("badge.earned." + userId, (data)=>{
         socket.emit("badge.earned", data);
     });
-    
+
     socket.on('profile.getCurrentUser', (data) => sendUserResponse());
     User.get(userId).changes().then(() => sendUserResponse())
 }
