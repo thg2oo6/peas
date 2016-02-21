@@ -12,8 +12,9 @@ function configure(app, socket, broadcast) {
     };
 
     app.on("badge.earned." + userId, (data)=> {
-        socket.emit("badge.earned"); //TODO: Publish for user the event of earning
+        socket.emit("badge.earned", data);
     });
+    
     app.on("level.check." + userId, (user)=> {
         Level.filter(function (level) {
                 return level("minScore").le(user.score);
@@ -30,6 +31,7 @@ function configure(app, socket, broadcast) {
                 }
             });
     });
+
     socket.on('profile.getCurrentUser', (data) => sendUserResponse());
     User.get(userId).changes().then(() => sendUserResponse())
 }
