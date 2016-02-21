@@ -22,6 +22,7 @@ Award = function (app, user, activity) {
                 });
 
                 app.emit("badge.earned." + user.id, badge);
+                app.emit("level.check." + user.id, user);
                 user.score += activity.score;
             }
 
