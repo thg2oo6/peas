@@ -24,7 +24,8 @@ var activities = {
     }),
     Spammer: new Activity({
         name: "Spammer",
-        description: "Access http://serverURL/trigger/sample/first 5 times and get the spammer badge.",
+        description: "Access http://serverURL/trigger/sample/first 5 times and get the " +
+        "spammer badge (together with 70 PEAs).",
         badge: "/images/achievements/sample/spam.png",
         score: 70
     })
