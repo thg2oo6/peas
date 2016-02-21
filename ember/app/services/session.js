@@ -20,10 +20,21 @@ export default Ember.Service.extend({
     this.get('websocket').send('profile.getCurrentUser');
   },
 
+  setController: function(controller) {
+    this.set('controller', controller);
+    this.enforceAdminAccess();
+  },
+
+  enforceAdminAccess() {
+    if (this.user && !this.user.isAdmin && this.controller) {
+      this.controller.transitionToRoute('app.dashboard');
+    }
+  },
+
   _setup: function() {
     this.get('websocket').on('profile.getCurrentUser.response', (response) => {
       this.set('user', response);
-
+      this.enforceAdminAccess();
     });
     this.authenticate();
   }.on('init')

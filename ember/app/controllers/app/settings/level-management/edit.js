@@ -2,9 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   websocket: Ember.inject.service('websocket'),
+  session: Ember.inject.service('session'),
   level: {},
 
   init: function() {
+    this.get('session').setController(this);
     this.subscribe();
   },
 
