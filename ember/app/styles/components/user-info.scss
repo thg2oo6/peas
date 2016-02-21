@@ -19,8 +19,11 @@
     width: 75px;
     float: right;
     margin-right: 15px;
-    .avatar img {
-      max-width: 50px;
+    .avatar {
+      cursor: pointer;
+      img {
+        max-width: 50px;
+      }
     }
     .signout .material-icons {
       width: 20px;

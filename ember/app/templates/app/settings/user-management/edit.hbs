@@ -1,0 +1,15 @@
+<div class="form peas-form">
+  {{mdl-textfield type="text" value=user.username label="Username"}}
+  {{mdl-textfield type="text" value=user.firstName label="First name"}}
+  {{mdl-textfield type="text" value=user.lastName label="Last name"}}
+  {{mdl-textfield type="email" value=user.email label="E-mail"}}
+
+  <div class="button-container">
+    {{#link-to 'app.settings.user-management.list' tagName="button" class="mdl-button mdl-js-button mdl-button--raised"}}
+      {{mdl-icon icon="keyboard_arrow_left"}} Back
+    {{/link-to}}
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right" {{action 'save'}}>
+      Save {{mdl-icon icon="check"}}
+    </button>
+  </div>
+</div>

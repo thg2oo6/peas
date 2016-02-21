@@ -3,7 +3,10 @@ function configure(app, socket, broadcast) {
     var userId = socket.request.user.id;
 
     var sendUserResponse = function() {
-      User.get(userId).then(user => {
+      User.get(userId).getJoin({
+          level: true
+      }).then(user => {
+        console.log(user);
         socket.emit('profile.getCurrentUser.response', user);
       });
     }

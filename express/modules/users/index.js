@@ -2,7 +2,10 @@ function configure(app, socket, broadcast) {
     var User = app.model.User;
     var getUsers = function () {
         User.orderBy("createdAt").run().then((result) => {
-            broadcast.emit('settings.users.get.response', result);
+            broadcast.emit('settings.users.get.response', result.map((user) => {
+              delete user.password;
+              return user;
+            }));
         });
     };
 
@@ -10,17 +13,17 @@ function configure(app, socket, broadcast) {
 
     socket.on('settings.users.getSingle', (data) => {
         User.get(data.id).run().then((user) => {
-            broadcast.emit('settings.users.getSingle.response', user);
+            socket.emit('settings.users.getSingle.response', user);
         });
     });
 
     socket.on('settings.users.get', () => {
-        getUsers();
+      getUsers()
     });
 
     socket.on('settings.users.post', (data) => {
         User.save(data).then((result) => {
-            broadcast.emit('settings.users.post.response', result);
+            socket.emit('settings.users.post.response', result);
             getUsers();
         });
     });
@@ -28,7 +31,7 @@ function configure(app, socket, broadcast) {
     socket.on('settings.users.put', (data) => {
         User.get(data.id).run().then((user) => {
             user.merge(data).save().then((result) => {
-                broadcast.emit('settings.users.put.response', result);
+                socket.emit('settings.users.put.response', result);
                 getUsers();
             });
         })

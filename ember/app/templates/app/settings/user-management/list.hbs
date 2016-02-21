@@ -1,0 +1,34 @@
+<table class="peas-table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Username</th>
+      <th class="mdl-data-table__cell--non-numeric">Name</th>
+      <th class="mdl-data-table__cell--non-numeric">E-mail</th>
+      <th>Score</th>
+      <th class="mdl-data-table__cell--non-numeric">Role</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users as |user|}}
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">{{user.username}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{user.firstName}} {{user.lastName}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
+        <td>{{user.score}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{#if user.isAdmin}}Admin{{else}}User{{/if}}</td>
+        <td>
+          {{#link-to 'app.settings.user-management.view' user tagName="button" class="mdl-button mdl-js-button mdl-button--icon"}}
+            <i class="material-icons">visibility</i>
+          {{/link-to}}
+          {{#link-to 'app.settings.user-management.edit' user tagName="button" class="mdl-button mdl-js-button mdl-button--icon"}}
+            <i class="material-icons">mode_edit</i>
+          {{/link-to}}
+          <button class="mdl-button mdl-js-button mdl-button--icon" {{action 'remove' user}}>
+            <i class="material-icons">delete_forever</i>
+          </button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

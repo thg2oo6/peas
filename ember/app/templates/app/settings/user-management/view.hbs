@@ -1,0 +1,36 @@
+<div class="form peas-form user-view">
+  <div class="avatar">
+    <img src="//www.gravatar.com/avatar/{{md5 user.email}}.jpg">
+  </div>
+
+  <div class="button-container">
+    {{#link-to 'app.settings.user-management.list' tagName="button" class="mdl-button mdl-js-button mdl-button--raised"}}
+      <i class="material-icons">keyboard_arrow_left</i> Back
+    {{/link-to}}
+  </div>
+
+  <table class="peas-table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <tbody>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Username</th>
+        <td class="mdl-data-table__cell--non-numeric">{{user.username}}</td>
+      </tr>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Name</th>
+        <td class="mdl-data-table__cell--non-numeric">{{user.firstName}} {{user.lastName}}</td>
+      </tr>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">E-mail address</th>
+        <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
+      </tr>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Score</th>
+        <td class="mdl-data-table__cell--non-numeric">{{user.score}}</td>
+      </tr>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Role</th>
+        <td class="mdl-data-table__cell--non-numeric">{{#if user.isAdmin}}Admin{{else}}User{{/if}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

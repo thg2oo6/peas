@@ -21,7 +21,7 @@ var UserWrapper = function (thinky) {
             this.createdAt = new Date();
         }
     });
-
+    
     return User;
 };
 
