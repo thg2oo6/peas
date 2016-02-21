@@ -1,5 +1,6 @@
 const config = require('./config');
 
+const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -22,6 +23,11 @@ function configure(app) {
     app.model = require('./models')(thinky);
 
     var io = require('socket.io').listen(3001);
+
+    app.use(cors({
+        credentials: true,
+        origin: config.host
+    }));
 
     var sessionStore = new RDBStore({
         connectOptions: {

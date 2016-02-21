@@ -1,14 +1,9 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const cors = require('cors');
 
 var app = express();
 
-app.use(cors({
-  credentials: true,
-  origin: 'http://localhost:4200'
-}));
 app.use(logger("combined"));
 app.use(express.static(path.join(__dirname, 'public')));
 
