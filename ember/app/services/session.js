@@ -23,6 +23,7 @@ export default Ember.Service.extend({
   _setup: function() {
     this.get('websocket').on('profile.getCurrentUser.response', (response) => {
       this.set('user', response);
+
     });
     this.authenticate();
   }.on('init')

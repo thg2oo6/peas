@@ -39,8 +39,10 @@ export default Ember.Controller.extend({
               },
               success: (response) => {
                 Ember.$.removeCookie("peas.sid");
-                Ember.$.cookie("peas.sid", response.sid);
-                this.get('session').authenticate();
+                Ember.$.cookie("peas.sid", response.sid, {
+                  path: '/'
+                });
+                this.redirectToDashboard();
               }
             });
           },
