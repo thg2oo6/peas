@@ -1,6 +1,7 @@
 $darkGreen: #557b2f;
 $lightGreen: #8bc34a;
 $gray: #707070;
+$lightGray: #fafafa;
 $darkBlue: #24517f;
 $black: #282828;
 
@@ -56,5 +57,56 @@ $color-accent: $palette-light-blue-A200;
     width: 20px;
     height: 25px;
     background-size: 20px;
+  }
+
+  &.xsmall::after {
+    width: 15px;
+    height: 16px;
+    background-size: 15px;
+  }
+}
+
+.badge-earn-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  height: 120px;
+  width: 500px;
+  z-index: 10;
+
+  > .ember-view {
+    right: -500px;
+    transition: 1s all linear;
+    position: absolute;
+    top: 25px;
+
+    &.display {
+      right: 35px;
+    }
+  }
+}
+
+.badge-popup {
+  width: 320px;
+  height: 70px;
+  z-index: 10;
+  background-color: $lightGray;
+  padding: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+
+  .badge-popup-image {
+    height: 70px;
+    width: 45px;
+    float: left;
+  }
+
+  .badge-dismiss-popup {
+    float: right;
+    cursor: pointer;
+
+    .material-icons {
+      font-size: 20px;
+    }
   }
 }

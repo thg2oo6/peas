@@ -1,17 +1,17 @@
 <div class="recent-list-container">
   <h6 class="title">Activity list</h6>
   <ul class="recent-list">
-    {{#each activities as |activity|}}
+    {{#each badges as |badge|}}
       <div class="activity-info">
-        <div class="image">
-            <img src="{{activity.badge.image}}" />
-        </div>
+        {{#link-to 'app.settings.user-management.view' badge.user tagName="div" class="image"}}
+          {{#gravatar-image email=badge.user.email}}{{/gravatar-image}}
+        {{/link-to}}
         <div class="activity-content">
           <div class="user-info">
-            {{activity.user.name}} has earned {{activity.badge.name}}
+            {{badge.user.firstName}} {{badge.user.lastName}} has earned {{badge.activity.name}}
           </div>
           <div class="score">
-            {{activity.badge.score}}<span class="score">p</span>
+            {{badge.activity.score}}<span class="score-icon xsmall"></span>
           </div>
         </div>
       </div>

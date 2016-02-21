@@ -14,7 +14,7 @@
     </div>
     <div class="right">
       {{#link-to 'app.settings.user-management.edit' user class="avatar" tagName="div"}}
-        <img src="//www.gravatar.com/avatar/{{md5 user.email}}.jpg">
+        {{#gravatar-image email=user.email}}{{/gravatar}}
       {{/link-to}}
       <div class="signout">
         {{#link-to 'signout' class="mdl-navigation__link"}}

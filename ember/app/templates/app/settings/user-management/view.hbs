@@ -1,6 +1,6 @@
 <div class="form peas-form user-view">
   <div class="avatar">
-    <img src="//www.gravatar.com/avatar/{{md5 user.email}}.jpg">
+    {{#gravatar-image email=user.email}}{{/gravatar-image}}
   </div>
 
   <div class="button-container">
@@ -26,6 +26,16 @@
       <tr>
         <th class="mdl-data-table__cell--non-numeric">Score</th>
         <td class="mdl-data-table__cell--non-numeric">{{user.score}}</td>
+      </tr>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Level</th>
+        <td class="mdl-data-table__cell--non-numeric">
+          {{#if user.level}}
+            {{user.level.name}}
+          {{else}}
+            -
+          {{/if}}
+        </td>
       </tr>
       <tr>
         <th class="mdl-data-table__cell--non-numeric">Role</th>

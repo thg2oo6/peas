@@ -13,12 +13,13 @@
       }
 
       .image {
+        cursor: pointer;
         display: table-cell;
         height: 36px;
         width: 36px;
         img {
-          height: inherit;
-          width: inherit;
+          height: 36px;
+          width: 36px;
         }
       }
       .activity-content {
@@ -27,6 +28,7 @@
         font-size: 12px;
         line-height: 13px;
         padding-left: 10px;
+        padding-right: 10px;
       }
     }
   }

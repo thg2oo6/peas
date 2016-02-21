@@ -1,0 +1,14 @@
+<div class="badge-popup">
+  <div class="badge-dismiss-popup" {{action 'dismiss'}}>
+    <div>{{mdl-icon icon="close"}}</div>
+  </div>
+  <div class="badge-popup-text">
+    <div class="badge-popup-image">
+      {{#hosted-image src=badge.activity.logo}}{{/hosted-image}}
+    </div>
+    <div class="badge-popup-content">
+        You have earned {{ badge.activity.name }}!<br/>
+        This has brought you to a grand total of {{badge.user.score}} <span class="score-icon xsmall"></span>!
+    </div>
+  </div>
+</div>
