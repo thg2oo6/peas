@@ -15,19 +15,24 @@ You can register yourself in the application and start using it.
 ## Sample Activities
 
 We provide some sample activities that can be used to see how it works:
-- First Badge: Access http://serverURL/trigger/sample/first and get the first badge.
-- Second Badge: Access http://serverURL/trigger/sample/second and get the second badge.
-- Spammer: Access http://serverURL/trigger/sample/first 5 times and get the spammer badge (together with 70 PEAs).
+- First Badge: Access http://serverURL/triggers/sample/first and get the first badge.
+- Second Badge: Access http://serverURL/triggers/sample/second and get the second badge.
+- Spammer: Access http://serverURL/triggers/sample/first 5 times and get the spammer badge (together with 70 PEAs).
 
 ## GitHub Integration
 
-Also, we provided a way to get Activities from GitHub commits.
+Also, we provided a way to get Activities from GitHub commits. What you have to do to achieve this? 
+Just add http://serverURL/triggers/helloWorld/github in your desired application and we will add some badges.
 
 ## Admin?
 
 You can login with the following account:
 - username: **admin**
 - password: **admin**
+
+# Future?
+
+There will be added extra functionalities - Watch the Issues page.
 
 # Installation & running
 

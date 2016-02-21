@@ -1,0 +1,9 @@
+<div class="activity-page">
+    <h3>Badges</h3>
+
+    <div class="activity-list-container">
+      {{#each badges as |badge|}}
+        {{#badge-info badge=badge}}{{/badge-info}}
+      {{/each}}
+    </div>
+</div>
