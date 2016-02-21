@@ -5,13 +5,13 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const thinky = require('thinky')(config.thinky);
 
-function registerModules(app, socket) {
-    require('./modules/dashboard')(app, socket);
-    require('./modules/activities')(app, socket);
-    require('./modules/badges')(app, socket);
-    require('./modules/levels')(app, socket);
-    require('./modules/recents')(app, socket);
-    require('./modules/users')(app, socket);
+function registerModules(app, socket, broadcast) {
+    require('./modules/dashboard')(app, socket, broadcast);
+    require('./modules/activities')(app, socket, broadcast);
+    require('./modules/badges')(app, socket, broadcast);
+    require('./modules/levels')(app, socket, broadcast);
+    require('./modules/recents')(app, socket,broadcast);
+    require('./modules/users')(app, socket, broadcast);
 }
 
 function configure(app) {
@@ -28,7 +28,7 @@ function configure(app) {
     });
 
     io.sockets.on('connection', function (socket) {
-        registerModules(app, socket);
+        registerModules(app, socket, io.sockets);
     });
 
     app.use(bodyParser.json());

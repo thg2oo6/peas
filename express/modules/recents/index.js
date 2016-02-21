@@ -1,6 +1,6 @@
-function configure(app, socket) {
+function configure(app, socket, broadcast) {
     socket.on('app.recents.get', (data) => {
-        socket.emit('app.recents.get.response', {})
+        broadcast.emit('app.recents.get.response', {})
     });
 }
 

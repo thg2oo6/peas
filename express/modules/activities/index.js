@@ -1,8 +1,8 @@
-function configure(app, socket) {
+function configure(app, socket, broadcast) {
     var Group = app.model.Group;
     var getGroups = function () {
         Group.run().then((result) => {
-            socket.emit('app.activities.get.response', result);
+            broadcast.emit('app.activities.get.response', result);
         });
     };
 
@@ -15,7 +15,7 @@ function configure(app, socket) {
             })
             .run()
             .then((group) => {
-                socket.emit('app.activities.getSingle.response', group);
+                broadcast.emit('app.activities.getSingle.response', group);
             });
     });
 

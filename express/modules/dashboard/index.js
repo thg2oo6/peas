@@ -1,6 +1,6 @@
-function configure(app, socket) {
-    socket.on('dashboard.get', (data) => {
-        socket.emit('dashboard.get.response', [
+function configure(app, socket, broadcast) {
+    socket.on('app.dashboard.get', (data) => {
+        broadcast.emit('app.dashboard.get.response', [
             { id: 1, name: "test" },
             { id: 1, name: "test" },
             { id: 1, name: "test" },

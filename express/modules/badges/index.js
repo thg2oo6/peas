@@ -1,4 +1,4 @@
-function configure(app, socket) {
+function configure(app, socket, broadcast) {
     var Badge = app.model.Badge;
 
     socket.on('app.badges.get', (data) => {
@@ -11,7 +11,7 @@ function configure(app, socket) {
             })
             .run()
             .then((result) => {
-                socket.emit('app.badges.get.response', result);
+                broadcast.emit('app.badges.get.response', result);
             });
     });
 }
