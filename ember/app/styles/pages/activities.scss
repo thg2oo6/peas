@@ -24,6 +24,7 @@
         .activity-item {
           margin-bottom: 25px;
           overflow: auto;
+          position: relative;
           .activity-item-left {
             float: left;
             .activity-item-image {
@@ -39,11 +40,13 @@
               width: 75px;
               text-align: center;
             }
-
-            .earned-date {
-              span {
-                font-weight: 600;
-              }
+          }
+          .earned-date {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            span {
+              font-weight: 600;
             }
           }
 

@@ -6,11 +6,6 @@
     <div class="score">
       {{activity.score}} <span class="score-icon small"></span>
     </div>
-    {{#if earnedDate}}
-      <div class="earned-date">
-        <span>Unlocked: </span>{{earnedDate}}
-      </div>
-    {{/if}}
   </div>
   <div class="activity-item-content">
     <h6>{{activity.name}}</h6>
@@ -18,4 +13,10 @@
       {{activity.description}}
     </div>
   </div>
+
+  {{#if earnedDate}}
+    <div class="earned-date">
+      <span>Unlocked: </span>{{date earnedDate}}
+    </div>
+  {{/if}}
 </div>
